@@ -1,0 +1,2251 @@
+@import "_flexbox";
+@import "_family";
+@import "mixins";
+@import "base";
+/*  
+	COLORS  
+*/
+$green: #50c56c;
+$blue: #4ec4ce;
+$grey: #292929;
+$red: red;
+$pink:#8b156f;
+$color_top: #eee;
+$color_bottom: #fff;
+/*  
+	FONT SIZE  
+*/
+$font_size_sidebar: 10px;
+$font_size_logo: 20px;
+$font_size_shop_item_large: 20px;
+$font_size_shop_item_small: 18px;
+
+
+/*  
+	FONT FACE  
+*/
+@font-face {
+	 font-family: SourceSansPro;
+	 src: url('../fonts/SourceSansPro/SourceSansPro-Light.ttf');
+}
+@font-face {
+	 font-family: Roboto;
+	 src: url('../fonts/Roboto/Roboto-Light.ttf');
+}
+
+/*
+	KEYFRAMES
+*/
+@include keyframes(slide-down) {
+	0% { margin-top: -200px; }
+	100% { margin-top: 0px; }
+}
+@include keyframes(tick) {
+	0% { 
+		@include scale(0);
+	}
+	80% {
+		@include scale(150);
+	}
+	90% {
+		@include scale(120);
+	}
+	100% { 
+		@include scale(100);
+	}
+}
+
+@include keyframes(spin) {
+	0% { @include rotate(0);}
+	100% { @include rotate(360);}
+}
+
+html, body {
+	min-height: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Roboto;
+	@include bg($color_top, $color_bottom);
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+h1 {
+	font-family: 'Lato', Roboto;
+	text-align: center;
+	color: #696969;
+	font-size: 90px;
+	font-weight: normal;
+}
+/*  
+	BUTTON
+*/
+.submit-button {
+	margin: auto;
+	top: 0; left: 0; bottom: 0; right: 0;
+	text-align: center;
+	.btn {
+		@extend %button;
+	}
+}
+/*  
+	SIDEBAR
+*/
+#sidebar {
+	margin: 0;
+	z-index: 100;
+	background-color: $grey;
+	@include opacity(90);
+
+	font-size: $font_size_sidebar;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	&:hover {
+		//@include opacity(100);
+	}
+	.drop {
+		padding: 0;
+		margin: 0 200px;
+		@include flexbox;
+		@include flex-direction(row);
+		@include respond-to(1) { 
+			margin: 0;
+		}
+		@include respond-to(3) { 
+			margin: 0;
+			@include flex-direction(column);
+			display: none;
+		}
+		@include flex-wrap(nowrap);
+		@include justify-content(space-between); 
+		li {
+			&.active {
+				@include border(bottom, $blue, 2px); 
+			} 
+			@include respond-to(12) { 
+				width: 100px;
+			}
+			@include flex-grow(1);
+			@include flex-shrink(100px);
+			margin: 5px;
+			//background-color: #fff;
+			text-align: center;
+			position: relative;
+			
+			@include first-last() {
+				margin-left : 0;
+				@include respond-to(1) { 
+					margin-left : 5px;
+				}
+			}
+
+			a {
+				width: 100%;
+				text-decoration: none;
+				color: $blue;
+				text-transform: uppercase;
+				padding: 10px 0;
+				display: block;
+				cursor: pointer;
+				&:hover{
+					color: $green;
+					background-color: #696969;
+				}
+			}
+			&.logo {
+				a {
+					font-family: 'Lato';
+					font-size: $font_size_logo;
+					font-weight: bold;
+					padding: 5px 0;
+					cursor: pointer;
+					&:hover {
+						background-color: $grey;
+						color: $blue;
+					}
+				}
+			}
+			& .hide {
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				@include box-shadow(0,2px,5px,#ccc);
+				@include respond-to(3) { 
+					margin: 0;
+					position: relative;
+				}
+				display: none;
+				width: 100%;
+				background-color: #fff;
+				&:hover {
+					& li {
+						a {
+							color: $green;
+							background-color: #696969;
+						}
+					}
+				}
+
+			}
+			& .show {
+				display: block;
+				@include respond-to(3) {
+					@include box-shadow(0,0,0,#ccc);
+					@include border(top, $blue, 2px); 
+					@include border(bottom, $blue, 2px); 
+					background-color: $grey;
+				}
+			}
+			&:hover {
+				//@include fader(hide);
+				.hide {
+					display: block;
+					@include fader(show);
+					@include respond-to(3) {
+						display: none;
+						//@include fader(hide);
+					}
+				}
+			}
+		}
+		.basket {
+
+			&.refresh {
+				@include animation('slide-down 1s 1');
+			}
+		}
+		&.show {
+			@include respond-to(3) {
+				display: block;
+			}
+			
+		}
+		&.hide {
+			@include respond-to(3) {
+				display: none;
+			}
+		}
+	}
+	&.login {
+	}
+	.menu {
+		display: none;
+		padding: 0;
+		margin: 0;
+		@include respond-to(3) {
+			@include flexbox;
+			@include flex-direction(row);
+			@include flex-wrap(nowrap);
+			@include justify-content(space-around); 
+		}
+		li {
+			@include respond-to(12) { 
+				width: 100px;
+			}
+			@include flex-grow(1);
+			@include flex-shrink(100px);
+			//margin: auto;
+			text-align: center;
+			position: relative;
+			a {
+				width: 100%;
+				text-decoration: none;
+				color: $blue;
+				text-transform: uppercase;
+				//padding: 10px 0;
+				display: block;
+				&:hover{
+					color: $green;
+					background-color: #696969;
+				}
+			}
+			&.mobile-button {
+				width: 50px;
+				a {
+					position: relative;
+					margin: auto;
+					@include flexbox;
+					@include icon(3px, 30px);
+					@include border-radius(4px);
+    				padding: 0;
+    				&:before{
+      					@include icon-before(3px, 30px, -7px);
+      					@include border-radius(4px);
+    				}
+    				&:after{
+      					@include icon-after(3px, 30px, 7px);
+      					@include border-radius(4px);
+    				}
+				}
+				&.show {
+
+					a {
+      					@include transition-duration(0.5s);
+      					background: transparent;
+      					&:before{
+        					transform: rotateZ(45deg) scaleX(1.25) translate(2px, 7px);
+      					}
+
+      					&:after{
+        					transform: rotateZ(-45deg) scaleX(1.25) translate(3px, -7px);
+      					}
+    				}
+				}
+			}
+			&.logo {
+				a {
+					font-family: 'Lato';
+					font-size: 20px;
+					font-weight: bold;
+					padding: 10px 0;
+					cursor: context-menu;
+					&:hover {
+						background-color: $grey;
+						color: $blue;
+					}
+				}
+			}
+		}
+	}
+	.info {
+		@extend .menu;
+		&.hide {
+			display: none;
+		}
+		&.show {
+			display: block;
+		}
+	}
+}
+/*  
+	HEADER
+*/
+
+header {
+	padding: 50px 0 0 0;
+	background-color: #fff;
+	height: 180px;
+	z-index: 20;
+	width: 100%;
+	@include box-shadow(0,0,10px,rgba(0, 0, 0, 0.4));
+	@include inline-flex;
+	@include respond-to(4) { 
+		height: 260px;
+	}
+	.header_items {
+		margin: 0 200px 0 200px;
+		@include flexbox;
+		@include flex-direction(row);
+		@include flex-wrap(nowrap);
+		@include justify-content(space-around); 
+		@include respond-to(1) { 
+			margin: 0;
+			//margin-top: 50px;
+		}
+		@include respond-to(4) { 
+			//height: 260px;
+			@include flex-direction(column);
+		}
+		div {
+			@include flex-grow(1);
+			@include flex-shrink(100px);
+		}
+		.image {
+			margin: auto;
+			img {
+				width: 200px;
+			}
+		}
+		.title {
+			margin: auto;
+			color: $blue;
+			font-family: 'Lato', Roboto;
+			text-align: center;
+			@extend %h1-size;
+			@include respond-to(3) { 
+				font-size: 30px;
+			}
+		}
+		.search {
+			right: 10px;
+			//bottom: 0;
+			position: absolute;
+			width: 300px;
+			display: none;
+			@include respond-to(3) { 
+				display: none;
+			}
+			.form-group {
+				input {
+					border: none;
+					width: 274px;
+					height: 100%;
+					margin: 0;
+					padding: 5px 26px 5px 0;
+					@include border(bottom, $blue, 1px);
+					outline: none;
+					color: $green;
+					&:active {
+						outline: none;
+					}
+					&:focus {
+						outline: none;
+						@include border(bottom, $green, 1px);
+					}
+					&[type=submit] {
+						width: 200px;
+						&:focus {
+							@include border(bottom, $green, 0);
+						}
+					}
+				}
+				.search-button {
+					width: 26px;
+					height: 26px;
+					position: absolute;
+					right: 0;
+					border: none;
+					background-color: #fff;
+					@include border(bottom, $blue, 1px);
+					&.success {
+						@include border(all, $green, 1px);
+					}
+				}
+			}	
+		}
+	}
+}
+/*  
+	FOOTER
+*/
+footer {
+	background-color: $grey;
+	width: 100%;
+	@include opacity(90);
+	margin-top: 50px;
+	//
+	//@include box-shadow(0,0,10px,rgba(0, 0, 0, 0.4));
+	bottom: 0;
+	.footer_items {
+		margin: 0 200px 0 200px;
+		@include respond-to(1) { 
+			margin: 0;
+		}
+		@include flexbox;
+		@include flex-direction(row);
+		@include flex-wrap(nowrap);
+		@include justify-content(space-around); 
+		@include align-items(flex-start);
+		@include respond-to(1) { 
+			margin: 0;
+			
+		}
+		@include respond-to(3) { 
+			@include flex-direction(column);
+		}
+		ul {
+			font-size: 14px;
+			padding: 0;
+			padding-left: 20px;
+			@include respond-to(12) { 
+				width: 100px;
+			}
+			@include flex-grow(1);
+			@include flex-shrink(100px);
+			margin: 10px;
+			text-align: left;
+			position: relative;
+			li {
+				padding: 5px 0;
+				color: $blue;
+				a {
+					color: $blue;
+					//margin-left: 10px;
+					&:hover {
+						color: $green;
+					}
+				}
+				span {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+/*  
+	SHADOW LINE
+*/
+
+.hr-shadow {
+    position: relative;
+    //margin: 0 auto 40px;
+    margin: 0 auto -5px;
+    padding: 20px 0 0 0;
+    text-align: center;
+    background: #fff;
+    z-index: 50;
+    width: 100%;
+    height: 10px;
+    @include box-shadow(0,4px,10px -6px,rgba(0, 0, 0, 0.4));
+    
+    &:after {
+    	content: "";
+    	position: absolute;
+    }
+    
+}
+/*  
+	SHADOW LINE REVERSE
+*/
+.hr-shadow-reverse { 
+	@extend .hr-shadow;
+	//margin-top: 10px;
+	@include box-shadow(0,-4px,10px -6px,rgba(0, 0, 0, 0.4));
+	&:after {
+		//@extend .hr-shadow:after;
+		right: 0;
+    	top: 0;
+	}
+}
+/*  
+	SHADOW LINE SHORT
+*/
+.hr-shadow-short { 
+	@extend .hr-shadow;
+	//margin-top: 5px;
+	//margin-bottom: 30px;
+	padding-top: 5px;
+	&:after {
+		//@extend .hr-shadow:after;
+	}
+}
+/*  
+	SHADOW LINE SHORT
+*/
+.hr-shadow-reverse-short { 
+	@extend .hr-shadow;
+	//margin-top: 5px;
+	//margin-bottom: 30px;
+	padding-top: 5px;
+	@include box-shadow(0,-4px,10px -6px,rgba(0, 0, 0, 0.4));
+}
+
+/*  
+	CONTAINER
+*/
+
+.container {
+	margin: 0 200px 0 200px;
+	padding: 20px 0 0 0;
+	background-color: #fff;
+	z-index: 10;
+	@include box-shadow(0,2px,10px,#ccc);
+	@include respond-to(0) { 
+		margin: 0 50px 0 50px;
+	}
+	@include respond-to(1) { 
+		margin: 0;
+	}
+	.back {
+		
+		margin: 5px 50px;
+		@include respond-to(1) { 
+			margin: 5px 10px;
+		}
+		a {
+			font-size: 12px;
+			color: #ccc;
+			&.active {
+				color: $blue;
+			}
+			&:hover {
+				color: $blue;
+			}
+		}
+
+	} 
+	.content {
+		//background-color: #ccc;
+		h2 {
+			margin: 20px 0;
+			text-align: center;
+			@extend %h2-size;
+		}
+		h3 {
+			margin: 10px 0;
+			text-align: center;
+			@extend %h3-size;
+		}
+		.lastall {
+			margin: 0;
+			@include flexbox;
+			@include flex-direction(row);
+			@include flex-wrap(nowrap);
+			@include justify-content(space-between);
+			@include align-items(center);
+			span:first-child {
+				color: #ccc;
+			}
+			@include respond-to(5) { 
+				display: none;
+			}
+			span:last-child a {
+				color: $blue;
+			}
+			font-size: 14px;
+			
+		}
+		.content_block {
+			//padding: 20px 0 0 0;
+			margin: 0 50px;
+			@include respond-to(1) { 
+				margin: 0 10px;
+			}
+
+			img {
+				width: 400px;
+				@include respond-to(2) { 
+					width: 300px;
+				}
+				@include respond-to(3) { 
+					width: 200px;
+				}
+			}
+			.images {
+				@include flexbox;
+				@include flex-direction(column);
+				@include flex-wrap(wrap);
+				@include justify-content(flex-start);
+				@include align-items(flex-start);
+				img {
+					width: 400px;
+					
+				}
+				
+				.image {
+					width: 100%;
+					margin: 10px 0;
+					@include flex-grow(1);
+					@include flex-shrink(1);
+					@include flex-basis(400px);
+					background-repeat: no-repeat;
+					background-size: 100%;
+				}
+			}
+			.date {
+				color: #ccc;
+				font-size: 14px;
+			}
+			.text {
+				//padding: 10px 0;
+				
+				@extend %line-height-size;
+				font-size: $text-size;
+				.leftimg {
+					float:left; 
+    				margin: 7px 10px 10px 0;
+    				@include respond-to(2) { 
+						margin-bottom: 3px;
+					}
+					@include respond-to(4) { 
+						width: 100%;
+					}
+				}
+				.rightimg {
+					float:right; 
+    				margin: 7px 0 10px 10px;
+    				@include respond-to(2) { 
+						margin-bottom: 3px;
+					}
+					@include respond-to(4) { 
+						width: 100%;
+					}
+				}
+				.centerimg {
+					width: 100%;
+					float:center;
+					margin: 5px 0;
+    				@include respond-to(2) { 
+						margin-bottom: 3px;
+					}
+				}
+				.text_bold {
+					font-weight: bold;
+					font-size: $text-size + 2;
+				}
+				iframe {
+  					display: block;
+
+  					width: 500px;
+  					margin: auto;
+  					margin-top: 30px;
+  					margin-bottom: 30px;
+  					@include respond-to(3) { 
+						width: 100%;
+					}
+  				}
+				//text-indent: 20px;
+			}
+			.news_block {
+				@include flexbox;
+				@include flex-direction(column);
+				@include flex-wrap(wrap);
+				@include justify-content(flex-start);
+				@include align-items(flex-start);
+				margin-bottom: 40px;
+				.text { 
+					padding: 0;
+					min-height: 200px;
+					margin-bottom: 20px;
+				}
+				.linktoread {
+					padding: 0;
+					margin: 10px 0;
+				}
+				.tags {
+					padding: 0;
+					margin: 10px 0;
+				}
+			}
+		}
+
+		.tags {
+			padding: 10px 0;
+			a {
+				@include opacity(80);
+				padding: 5px 10px;
+				margin: 0 5px;
+				background-color: $blue;
+				color: #fff;
+				font-size: $text-size;
+				&:hover {
+					@include opacity(100);
+				}
+			}
+		}
+		.linktoread {
+			//padding: 30px 0;
+			padding: 0;
+			margin: 10px 0;
+			a {
+				@include opacity(80);
+				padding: 5px 10px;
+				margin: 0 5px;
+				background-color: $green;
+				font-size: $text-size;
+				color: #fff;
+				&:hover {
+					@include opacity(100);
+				}
+			}
+		}
+	}
+}
+/*  
+	ALL ITEMS
+*/
+
+.content_block_all {
+	//margin: 20px 50px;
+	padding: 20px 50px;
+	@include respond-to(1) { 
+		margin: 10px;
+		margin: 0;
+		padding: 10px;
+	}
+	.info {
+		width: 100%;
+		margin: 0;
+		@include flexbox;
+		@include flex-direction(row);
+		@include flex-wrap(nowrap);
+		@include justify-content(flex-start);
+
+		@include align-items(stretch);
+		.image {
+			width: 250px;
+			@include flex-grow(0);
+			@include flex-shrink(0);
+			@include flex-basis(250px);
+			margin: 10px 0;
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
+		.text {
+			padding: 0 0 10px 0;
+			//margin: 10px;
+			//min-height: 300px;
+
+			//old
+			@extend %line-height-size;
+			//font-size: $text-size;
+
+			//new
+			//font-family: Tahoma;
+			font-size: 14px;
+			//line-height: 17px;
+			//width: 250px;
+			.leftimg {
+				float:left; 
+    			margin: 7px 10px 10px 0;
+    			@include respond-to(2) { 
+					margin-bottom: 3px;
+				}
+			}
+			img {
+				width: 250px;
+				@include respond-to(2) { 
+					width: 200px;
+				}
+				@include respond-to(3) { 
+					width: 200px;
+				}
+			}
+		}
+		@include respond-to(3) { 
+			@include flex-direction(column);
+			@include align-items(center);
+			div {
+				@include flex-grow(0);
+				@include flex-shrink(1);
+			}
+			.image {
+				width: 100%; 
+			}
+		}
+	}
+	.date {
+		font-size: 12px;
+		color: #ccc;
+	}
+	.content_block_one {
+		.linktoread { 
+			
+		}
+	}
+	.linktoread {
+		padding: 0;
+		margin: 10px 0;
+		@include respond-to(3) { 
+			padding: 10px 0;
+		}
+		//padding: 30px 0;
+		a {
+			@include opacity(80);
+			padding: 5px 10px;
+			margin: 0 5px;
+			background-color: $green;
+			color: #fff;
+			font-size: $text-size;
+			&:hover {
+				@include opacity(100);
+			}
+		}
+	}
+} 
+
+
+
+.left_text {
+	width: 300px;
+	height: 1000px;
+	background-color: #ccc;
+}
+
+/*  
+	TEXT ON HR TAG
+*/
+.hr-text {
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: #000;
+  text-align: center;
+  height: 30px;
+  @include opacity(90);
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    //content: '';
+    position: relative;
+    display: inline-block;
+    color: black;
+    padding: 0 .5em;
+    line-height: 1.5em;
+    @extend %h3-size;
+    @include respond-to(5) { 
+		font-size: 18px;
+	}
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #fff;
+    background-color: #fff;
+
+  }
+  a {
+  	padding: .1em .5em;
+  	position: absolute;
+  	z-index: 10;
+  	color: $blue;
+  	@extend %h3-size;
+  	@include respond-to(5) { 
+		font-size: 18px;
+	}
+  }
+}
+/*  
+	SHOP ITEMS
+*/
+.shop_block {
+	margin: 0 50px;
+	@include respond-to(1) { 
+		margin: 0 10px;
+	}
+
+	.lastall {
+		margin: 0;
+		@include flexbox;
+		@include flex-direction(row);
+		@include flex-wrap(nowrap);
+		@include justify-content(space-between);
+		@include align-items(center);
+		span:first-child {
+			color: #ccc;
+			@include respond-to(4) { 
+				display: none;
+			}
+		}
+		span:last-child a {
+			color: $blue;
+		}
+
+	}
+}
+/*  
+	SHOP ALL ITEMS
+*/
+.shop_block_all {
+	//height: 400px;
+	margin: 50px 0 0 0;
+	@include flexbox;
+	@include flex-direction(row);
+	@include flex-wrap(nowrap);
+	@include justify-content(space-around);
+	@include align-items(center);
+	@include respond-to(3) { 
+		@include flex-direction(column);
+		@include justify-content(flex-start);
+		@include align-items(center);
+		margin-top: 50px;
+	}
+	.shop_item {
+		height: 400px;
+		@include respond-to(3) { 
+			height: 400px;
+			//margin-bottom: 30px;
+		}
+		.image {
+			width: 250px;
+			height: 250px;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			background-position: 0 -30px;
+			@include respond-to(1) { 
+				height: 200px;
+				width: 200px;
+			}
+			@include respond-to(2) { 
+				height: 200px;
+				width: 200px;
+			}
+			@include respond-to(3) { 
+				height: 250px;
+				width: 250px;
+			}
+			.new-item {
+				@extend %label-item-shop;
+				background-color: $blue;
+				color: #fff;
+			}
+			.sale-item {
+				@extend %label-item-shop;
+				background-color: #77517F;
+				color: #fff;
+			}
+			.best-item {
+				@extend %label-item-shop;
+				background-color: $green;
+				color: #fff;
+			}
+		}
+		.title {
+			text-align: center;
+			font-size: $font_size_shop_item_large;
+			@include respond-to(4) { 
+				font-size: $font_size_shop_item_small;
+			}
+			color: $blue;
+			padding: 10px 0 5px 0;
+			a {
+				color: $blue;
+			}
+		}
+		.price {
+			text-align: center;
+			font-size: 16px;
+			color: #696969;
+			padding: 5px 0;
+			position: relative;
+			background-color: #fff;
+			span {
+				font-size: 16px;
+				margin: 0 2px;
+				// color: $green;
+			}
+			
+		}
+		.hr-shadow {
+			//margin-bottom: 10px;
+			//margin-bottom: 2px;
+		}
+		.submit-button {
+			button {
+				z-index: -2;
+				text-transform: uppercase;
+				color: $blue;
+				@include border-radius-part(top-left-radius,0px);
+				@include border-radius-part(top-right-radius,0px);
+
+			}
+		}
+	}
+}
+/*  
+	SHOP ONE ITEM
+*/
+
+.shop_block_one {
+	margin: 50px 0;
+	.part {
+		width: 100%;
+		@include inline-flex;
+		@include flex-direction(row);
+		@include flex-wrap(nowrap);
+		@include justify-content(flex-start);
+		@include align-items(flex-start);
+		@include respond-to(2) { 
+			@include flex-direction(column);
+			@include align-items(center);
+		}
+		.images {
+			width: 350px;
+			@include respond-to(4) { 
+				width: 300px;
+			}
+		}
+		.info {
+			width: 100%;
+			padding: 20px 20px;
+			@include respond-to(2) { 
+				padding: 20px 0;
+			}
+			.title {
+				width: 100%;
+				font-size: 30px;
+				text-align: center;
+			}
+			.price {
+				text-align: center;
+				padding: 10px 0;
+				span {
+					//color: $blue;
+					font-size: 20px;
+					margin: 0 2px;
+				}
+			}
+			.hr-shadow {
+				margin-bottom: 2px;
+			}
+			.submit-button {
+				height: 40px;
+				button {
+					z-index: -2;
+					text-transform: uppercase;
+					color: $blue;
+					//@include transition(top 1s ease-out 1s);
+					@include border-radius-part(top-left-radius,0px);
+					@include border-radius-part(top-right-radius,0px);
+
+				}
+			}
+		}
+		.active {
+			width: 350px;
+			height: 350px;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			@include respond-to(4) { 
+				width: 300px;
+				height: 300px;
+			}
+			&:hover {
+				cursor: -webkit-zoom-in;
+			}
+		}
+		.smallimage {
+			margin: 10px 0;
+			@include flexbox;
+			@include flex-direction(row);
+			@include flex-wrap(nowrap);
+			@include justify-content(space-between);
+			@include align-items(center);
+			.image {
+				width: 100px;
+				height: 100px;
+				margin: 5px;
+				background-repeat: no-repeat;
+				background-size: 100%;
+				cursor: pointer;
+				@include opacity(20);
+				&:first-child {
+					margin-left: 0;
+				}
+				&:last-child {
+					margin-right: 0;
+				}
+				&.select {
+					@include opacity(100);
+				}
+				&:hover {
+					@include opacity(100);
+				}
+			}
+			
+		}
+		.text {
+			line-height: 24px;
+		}
+	}
+}
+/*  
+	ITEM SUPPORT ATTR
+*/
+.info {
+
+	.support {
+		width: 100%;
+		background-color: #fff;
+		position: relative;
+		text-align: center;
+		cursor: auto;
+		h4 {
+			text-align: center;
+			font-size: 14px;
+			margin: 10px 0;
+		}
+		.support_buttons {
+			@include flexbox;
+			@include flex-direction(row);
+			@include flex-wrap(wrap);
+			@include justify-content(center);
+			@include align-items(center);
+			button {
+				margin: 2px;
+				border: none;
+				cursor: pointer;
+				
+				background-color: #fff;
+			}
+		}
+		
+		&.color {
+			
+			button {
+				width: 20px;
+				height: 20px;
+				@include border-radius(2px);
+				@include box-shadow(0,0,5px,rgba(0, 0, 0, 0.4));
+			}
+		}
+		&.size {
+			button {
+				width: 30px;
+				@include border-radius(2px);
+				@include box-shadow(0,0,5px,rgba(0, 0, 0, 0.4));
+			}
+		}
+		&.like {
+			.support_buttons { 
+				@include flex-direction(column);
+				@include justify-content(flex-start);
+				@include align-items(center);
+				button {
+
+				}
+			}
+		}
+	}
+}
+
+section.support_check {
+	//@extend section.color;
+	h4 {
+		text-align: center;
+	}
+	.size_item {
+		//@extend .color_item;
+		background-color: #fff;
+	}
+	table {
+		width: 100%;
+		@include respond-to(2) { 
+			width: 200px;
+			margin: auto;
+		}
+		tr {
+			td {
+				&:first-child {
+					width: 80%;
+					text-align: right;
+					padding-right: 20px;
+					@include respond-to(2) { 
+						width: 50%;
+						text-align: center;
+						padding-right: 0;
+					}
+				}
+				&:last-child {
+					width: 20%;
+					@include box-shadow(0,0,2px,rgba(0, 0, 0, 0.4));
+					@include respond-to(2) { 
+						width: 50%;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+/*  
+	CATEGORIES SECTION
+*/
+.categories {
+	.hr-shadow {
+		//margin-bottom: 10px;
+	}
+	.hr-shadow-reverse {
+		//margin-top: 10px;
+	}
+	ul {
+		height: 250px;
+		padding: 0;
+		margin: 10px 20px;
+		@include flexbox;
+		@include flex-direction(row);
+		@include flex-wrap(wrap);
+		@include justify-content(space-around);
+		@include align-items(center);
+		@include respond-to(3) { 
+			height: 350px;
+		}
+		@include respond-to(4) { 
+			@include flex-direction(column);
+			@include justify-content(space-around);
+			@include align-items(center);
+			height: 650px;
+		}
+		li {
+			border: none;
+			margin: 2px;
+			@include transition(top 1s ease-out 0.5s);
+			@include border-radius(2px);
+			//@include box-shadow(0,2px,5px,rgba(0,0,0,0.16));
+			@include size(150px,36px);
+			@include respond-to(4) { 
+				width: 90%;
+			}
+  			display: inline-block;
+  			text-align: center;
+  			line-height: 36px;
+  			outline: 0;
+  			//padding: 0 2rem; 
+  			vertical-align: middle;
+  			-webkit-tap-highlight-color: transparent;
+  			letter-spacing: .5px;
+  			outline: none;
+  			cursor: pointer;
+  			a {
+  				width: 100%;
+  				display: block;
+  				color: $blue; 
+  				background-color: #fff;
+  				@include box-shadow(0,1px,1px,rgba(0,0,0,0.16));
+  				&:hover {
+  					background-color: #fff;
+					color: $blue;
+					@include box-shadow(0,2px,5px,rgba(0,0,0,0.16));
+  				}
+  			}
+  			&.active {
+  				@include border-radius(5px);
+  				@include box-shadow(0,0,10px,$blue);
+				a {
+					background-color: $blue;
+
+					color: #fff;
+				}
+			}
+		}
+		
+	}
+}
+
+/*  
+	NAVIGATION | PAGINATION
+*/
+
+.zui-pager {
+	text-align: center;
+	margin: 1em;
+	@include respond-to(3) { 
+		margin: 1em;
+	}
+	@include respond-to(4) { 
+		margin: 0;
+	}
+    &--center { text-align: center; }
+
+    &--right { text-align: right; }
+
+	.btn-group {
+		margin: 0; padding: 0;
+		display: inline-block;
+		
+		&__item {
+			display: inline-block;
+			margin: 0; padding: 0;
+			height: 40px;
+			float: left;
+			
+			.btn {
+				margin: 0;
+				padding: .5em 1em;
+				border: 0;
+				font-weight: 300;
+				background-color: transparent;
+				@include box-shadow(inset 0,-2px,0px,#bbb);
+				//box-shadow: inset 0px -2px 0px 0px #bbb;
+				color: #bbb;
+				//cursor: pointer;
+				&.btn--basic {
+					font-size: 12px;
+				}
+				&:hover {
+					@include box-shadow(inset 0,-4px,0px,#bbb);
+					//box-shadow: inset 0px -4px 0px 0px #bbb;
+				}
+			}
+			
+    		.current {
+    			@include box-shadow(inset 0,-4px,0px,$blue);
+				//box-shadow: inset 0px -4px 0px 0px $blue;
+
+				color: $blue;
+				font-weight: bold;
+		
+    		    &:hover {
+    		    	@include box-shadow(inset 0,-4px,0px,$blue);
+    		        box-shadow: inset 0px -4px 0px 0px $blue;
+    		        cursor: default;
+    		    }
+    		}
+		}
+	}
+	
+	.btn[disabled] {
+			@include box-shadow(inset 0,-2px,0px,#e6e6e6);
+			//box-shadow: inset 0px -2px 0px 0px #e6e6e6;
+		 	color: #e6e6e6;
+
+        	&:hover {
+        		@include box-shadow(inset 0,-2px,0px,#e6e6e6);
+				//box-shadow: inset 0px -2px 0px 0px #e6e6e6;
+            	cursor: default;
+        	}
+	}
+	.i-chevron-left,
+	.i-chevron-right {
+		margin: 10px;
+		padding: 1px;
+		border-style: solid;
+		border-color: #3a3a3a;
+		width: 6px;
+		height: 6px;
+		display: block;
+		cursor: pointer;
+	}
+	.i-chevron-left {
+		border-width: 1px 0 0 1px;
+		transform: rotate(-45deg);
+	}
+	.i-chevron-right {
+		border-width: 1px 1px 0 0;
+		transform: rotate(45deg);
+	}
+}
+
+.i-caret-down {
+	border-width: 3px;
+	border-style: solid;
+	border-color: black transparent transparent transparent;
+	position: absolute;
+	top: 18px;
+	right: 3px;
+}
+
+.small {
+	.btn {
+		position: relative;
+		box-shadow: 0 0 0 transparent !important;
+		padding-right: 20px !important;
+		padding-left: 5px !important;
+	}
+	
+	span {
+		&:nth-of-type(1) {
+			font-weight: bold;
+			color: #739600;
+		}
+		&:nth-of-type(2) {
+			margin: 0 5px;
+		}
+	}
+	.select-overlay {
+		opacity: 0;
+		position: absolute;
+		top: 0; left: 0; right: 0; bottom: 0;	
+		width: 100%;
+	}
+}
+/*  
+	FORM RECALL
+*/
+
+.recall {
+	//width: 400px;
+	margin: auto;
+	padding: 10px 0 50px 0;
+	@include respond-to(5) { 
+		//width: 280px;
+	}
+	@include respond-to(4) { 
+		//width: 100%;
+		//padding: 0 10px;
+	}
+	.form-group {
+		margin: 10px 0;
+		@include respond-to(4) { 
+			width: 100%;
+		}
+		input {
+			border: none;
+			width: 390px;
+			margin: 0;
+			padding: 5px 5px;
+			@include border(bottom, $blue, 1px);
+			outline: none;
+			@include respond-to(5) { 
+				width: 290px;
+			}
+			@include respond-to(4) { 
+				width: 100%;
+				padding: 5px 0;
+			}
+			&:active {
+				outline: none;
+			}
+			&:focus {
+				outline: none;
+				@include border(bottom, $green, 1px);
+			}
+			&[type=submit] {
+				width: 200px;
+				&:focus {
+					@include border(bottom, $green, 0);
+				}
+			}
+			&:disabled {
+				background-color: #fff;
+			}
+
+		}
+		textarea {
+			border: none;
+			width: 390px;
+			margin: 0;
+			padding: 5px 5px;
+			outline: none;
+			@include border(bottom, $blue, 1px);
+			@include respond-to(5) { 
+				margin: auto;
+				width: 90%;
+			}
+			@include respond-to(4) { 
+				width: 100%;
+				padding: 5px 0;
+			}
+			&:active {
+				outline: none;
+			}
+			&:focus {
+				outline: none;
+				@include border(bottom, $green, 1px);
+			}
+		}
+		select {
+			border: none;
+			width: 100%;
+			margin: 0;
+			padding: 5px 5px;
+			outline: none;
+			@include border(bottom, $blue, 1px);
+			@include respond-to(5) { 
+				margin: auto;
+				width: 90%;
+			}
+			@include respond-to(4) { 
+				width: 100%;
+				padding: 5px 0;
+			}
+			&:active {
+				outline: none;
+			}
+			&:focus {
+				outline: none;
+				@include border(bottom, $green, 1px);
+			}
+		}
+		label {
+			font-size: 14px;
+			color: #696969;
+		}
+		&.checkbox {
+			@extend %checkbox;
+
+			display: inline-block;
+			label {
+
+				font-size: 14px;
+				color: #696969;
+			}
+			input {
+				width: 30px;
+			}
+		}
+		&.reset {
+			a {
+				font-size: 14px;
+				color: #696969;
+				&:hover {
+					color: #000;
+				}
+			}
+		}
+		.input-group {
+			input {
+				display: inline-block;
+				width: 365px;
+				@include respond-to(5) { 
+					width: 265px;
+				}
+				@include respond-to(4) { 
+					width: 275px;
+				}
+
+			}
+			span {
+				display: inline-block;
+				width: 20px;
+			}
+		}
+		.help-block {
+			font-size: 12px;
+			color: $red;
+		}
+		&.has-error {
+			input {
+				@include border(bottom, $red, 1px);
+			}
+		}
+		
+	}
+
+	.submit-button {
+		margin: 20px 0;
+		.btn {
+			padding: 0 2rem;
+			border: none;
+		}
+	}
+}
+
+/*  
+	COMMENTS SECTION
+*/
+.commets {
+	@include flexbox;
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+	@include justify-content(space-around);
+	@include align-items(center);
+	.onecomment {
+		margin: 10px 0;
+		text-align: left;
+		width: 700px;
+
+		.hr-shadow {
+			margin-bottom: 20px;
+		}
+		.author {
+			padding: 5px 0;
+			margin: 0 100px;
+			@include respond-to(2) { 
+				margin: 0;
+			}
+		}
+		.date {
+			color: #696969;
+			font-size: 12px;
+			padding: 5px 0;
+			margin: 0 100px;
+			@include respond-to(2) { 
+				margin: 0;
+			}
+		}
+		.text {
+			margin: 0 100px;
+			line-height: 25px;
+			@include respond-to(2) { 
+				margin: 0;
+			}
+
+		}
+	}
+}
+/*  
+	CONTACTS 
+*/
+.contacts_title {
+	text-align: center;
+	width: 100%;
+	font-size: 20px;
+}
+.contacts_block {
+	@include flexbox;
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+	@include justify-content(flex-start);
+	@include align-items(flex-start);
+	.contacts_block_one {
+		margin: 20px;
+		//margin: auto;
+		width: 300px;
+		img {
+			width: 300px;
+		}
+		.title {
+			text-align: center;
+			color: $blue;
+		}
+		.linktoread {
+			text-align: center;
+		}
+	}
+}
+
+.contact_phone {
+	margin-top: 20px;
+	.title {
+		text-align: center;
+		@include respond-to(5) { 
+			font-size: 12px;
+		}
+		span {
+			padding: 5px 5px;
+			color: $blue;
+			font-size: 18px;
+			@include respond-to(5) { 
+				font-size: 14px;
+				display: block;
+			}
+		}
+		
+	}
+}
+.contact_mail {
+	@extend .contact_phone;
+	margin: 20px 0 10px 0;
+}
+.all_contacts {
+	width: 500px;
+	padding: 10px 30px;
+	margin: auto;
+	@include border(bottom, #eee, 1px);
+	@include border(top, #eee, 1px);
+	//@include box-shadow(0,0px,5px,#ccc);
+	margin-top: 20px;
+	table {
+		text-align: left;
+		width: 100%;
+		a {
+			color: $blue;
+			&:hover {
+				color: darken($blue,20%);
+			} 
+		}
+	}
+}
+.vk_groups {
+  	padding: 20px 0 40px 0;
+  	height: 150px;
+	@include justify-content(space-around);
+	@include align-items(center);
+	@include respond-to(3) {
+		@include justify-content(center);
+		@include align-items(center);
+	}
+	
+	#vk_group_1 {
+		margin: auto;
+	}
+	#vk_group_2 {
+		margin: auto;
+	}
+}
+/*  
+	SEARCH SECTION
+*/
+
+
+
+
+
+/*  
+	MODAL WINDOW
+*/
+.global-modal {
+ 	visibility: hidden;
+ 	.overlay {
+  		background: rgba(255, 255, 255, 0.77);
+  		position: fixed;
+  		top: 0;
+  		left: 0;
+  		z-index: 100;
+  		@include size(100%,100%);
+	}
+}
+
+.global-modal_contents {
+	background: #FFF;
+	@include box-shadow(0,0,8px 2px,rgba(182, 182, 182, 0.75));
+	@include size(70%,500px);
+	@include respond-to(3) { 
+		@include size(90%,500px);
+	}
+  	z-index: 200;
+  	position: fixed;
+  	top: 15%;
+  	margin: auto;
+  	top: 0; left: 0; bottom: 0; right: 0;
+	h1 {
+  		margin: 0;
+  		padding: 0;
+  		line-height: 32rem;
+  		text-align: center;
+  		display: block;
+	}
+	.global-modal-header {
+		@include border(bottom, #ccc, 1px);
+  		h3 {
+  			color: #34495E;
+  			text-align: center;
+  			font-weight: bold;
+  			font-size: 22px;
+		}
+		.mobile-close {
+			position: absolute;
+			cursor: pointer;
+			top: 10px;
+			right: 20px;
+		}
+		span {
+  			font-weight: 200;
+		}
+	}
+	.global-modal-body {
+  		width: 100%;
+  		height: 100%;
+  		p {
+  			color: #34495E;
+  			font-size: 16px;
+  			line-height: 23px;
+  			text-align: center;
+  		}
+  		.btn-green-flat {
+  			padding: 0;
+  			@extend %button;
+		}
+		.check_block {
+			margin: 0 0 20px 0;
+			//background-color: #eee;
+			.tbl-content {
+
+				max-height: 280px;
+			}
+			th {
+				padding: 5px;
+				
+			}
+			td {
+				padding: 5px;
+			}
+		}
+		.modal-image {
+			width: 100%;
+  			height: 100%;
+			text-align: center;
+			img {
+				cursor: -webkit-zoom-out;
+				max-height: 100%;
+			}
+		}
+	}
+	&.modal-transition {
+		@include scale(70);
+		@include opacity(0);
+  		@include transition(all 0.3s);
+	}
+}
+
+.global-modal-show {
+  	visibility: visible;
+  	.modal-transition {
+  		@include scale(100);
+  		@include opacity(100);
+  	}
+}
+
+/*  
+	PRELOADER
+*/
+#preloader {
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	top: 0; left: 0; bottom: 0; right: 0;
+	position: fixed;
+	z-index: 200;
+	$fable-1-size: 100px;
+	$fable-2-size: 80px;
+	$fable-3-size: 60px;
+	.fable-1 {
+		@include border-radius(100%);
+		@include transition(all .1s ease-in-out);
+		@include size($fable-1-size);
+		@include animation(spin 1s infinite linear);
+		margin: auto;
+		position: absolute;
+		top: 0; left: 0; bottom: 0; right: 0;
+		&:before {
+			@include size($fable-1-size,$fable-1-size - 4);
+			@include border-radius(100%);
+			@include border(top, $blue, 2px);
+			@include border(bottom, $blue, 2px);
+			content: '';
+			display: block;
+			position: absolute;
+		}
+		&:after {
+			@include size($fable-1-size - 4,$fable-1-size);
+			@include border-radius(100%);
+			@include border(left, #fff, 2px);
+			@include border(right, #fff, 2px);
+			content: '';
+			display: block;
+			position: absolute;
+		}
+	}
+	.fable-2 {
+		@extend .fable-1;
+		@include size($fable-2-size);
+		@include animation(spin 2s infinite linear);
+		&:before {
+			@include size($fable-2-size,$fable-2-size - 4);
+		}
+		&:after {
+			@include size($fable-2-size - 4,$fable-2-size);
+		}
+	}
+	.fable-3 {
+		@extend .fable-1;
+		@include size($fable-3-size);
+		@include animation(spin 1.5s infinite linear);
+		&:before {
+			@include size($fable-3-size,$fable-3-size - 4);
+		}
+		&:after {
+			@include size($fable-3-size - 4,$fable-3-size);
+		}
+	}
+}
+
+/*  
+	CHECK TABLE
+*/
+.check_block {
+	margin: 0 0 50px 0;
+	table {
+  		width:100%;
+  		table-layout: fixed;
+	}
+	.tbl-header {
+  		background-color: $blue;
+ 	}
+	.tbl-content {
+  		max-height:300px;
+  		overflow-x:auto;
+  		margin-top: 0px;
+  		border: 1px solid rgba(255,255,255,0.3);
+  		@include box-shadow(inset 0,0,2px,rgba(182, 182, 182, 0.75));
+	}
+	th {
+  		padding: 20px 15px;
+  		text-align: left;
+  		font-weight: 500;
+  		font-size: 12px;
+  		color: #fff;
+  		text-transform: uppercase;
+  		@include respond-to(2) { 
+			padding: 10px 5px;
+		}
+
+	}
+	td {
+  		padding: 15px;
+  		text-align: left;
+  		vertical-align:middle;
+  		font-weight: 300;
+  		font-size: 12px;
+  		color: #000;
+  		border-bottom: solid 1px rgba(255,255,255,0.1);
+  		@include respond-to(2) { 
+			padding: 5px;
+		}
+  		.count_val {
+  			border: none;
+  			width: 50px;
+  			outline: none;
+  			@include border(bottom, $blue, 1px);
+  			text-align: center;
+  			&:disabled {
+  				background-color: #fff;
+  			}
+  		}
+  		button {
+  			border: none;
+  			@include size(20px,20px);
+  			padding: 0;
+  			margin: 0;
+  			background-color: #fff;
+  			cursor: pointer;
+  		}
+  		.price_end {
+  			font-size: 16px;
+  		}
+  		.delete_item {
+  			width: 100%;
+  			@include box-shadow(0,0,3px,rgba(182, 182, 182, 0.75));
+  		}
+  		img {
+  			width: 100px;
+  		}
+	}
+	tr {
+
+		&:last-child {
+  			padding: 20px 15px;
+  			@include respond-to(2) { 
+				padding: 10px 5px;
+			}
+  		}
+	}
+}
+.check {
+	margin: 20px 0;
+}
+/*  
+	CHEKC FORM
+*/
+.check_block {
+	form {
+
+		&.addform {
+			@extend .recall;
+			width: 100%;
+			@include respond-to(1) { 
+				width: 90%;
+			}
+			@include respond-to(5) { 
+				width: 100%;
+				padding: 10px 0;
+			}
+			.form-add {
+				@include inline-flex;
+				@include flex-direction(row);
+				@include flex-wrap(nowrap);
+				@include justify-content(space-around); 
+				@include respond-to(1) { 
+					@include flex;
+					@include flex-direction(column);
+				}
+				@include respond-to(3) { 
+					//margin: 0 10px;
+				}
+			}
+			.add-form {
+				width: 400px;
+				padding: 20px 20px 0 20px;
+
+				@include respond-to(5) { 
+					width: 280px;
+					margin: auto;
+					padding: 0;
+					//padding: 5px 5px 0 5px;
+				}
+				select {
+					width: 400px;
+					@include respond-to(5) { 
+						width: 280px;
+					}
+				}
+			}
+			.support-form {
+				padding: 20px 20px 0 20px;
+				@include respond-to(5) { 
+					//width: 280px;
+					//margin: auto;
+					padding: 0;
+					//padding: 5px 10px 0 10px;
+				}
+				select {
+					width: 400px;
+					@include respond-to(5) { 
+						width: 280px;
+						
+					}
+				}
+				.text {
+					@extend %line-height-size;
+					font-size: $text-size;
+				}
+			}
+			.form-group {
+				margin: 10px 0;
+				.input-group {
+					span {
+						width: 20px;
+					}
+					input {
+						padding: 5px 0;
+						width: 376px;
+						@include respond-to(5) { 
+							width: 276px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.left-recall {
+	position: fixed;
+	top: 300px;
+	left: 0px;
+	width: 270px;
+	height: 30px;
+	background-color: $grey;
+	@include opacity(90);
+	color: $blue;
+	@include box-shadow(0,0,3px,rgba(182, 182, 182, 0.75));
+	@include rotate(90);
+	transform-origin: 5% 40%;
+	z-index: 100;
+	@include transition(all .3s ease-in-out);
+	@include respond-to(1) { 
+		display: none;
+	}
+	.title {
+		padding: 7px 0;
+		text-align: center;
+		font-size: $font_size_sidebar;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+	&:hover {
+	}
+	&.show {
+		@include rotate(0);
+	}
+	form {
+		width: 100%;
+		@include box-shadow(0,0,3px,rgba(182, 182, 182, 0.75));
+		background-color: #fff;
+		.form-group {
+			padding: 10px 0;
+			text-align: center;
+			font-size: 14px;
+			label {
+				color: $grey;
+			}
+			.input-group {
+				padding: 5px 0;
+				span {
+					color: $grey;
+				}
+				input {
+					padding: 3px 0;
+					border: none;
+					@include border(bottom, $blue, 1px);
+					outline: none;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+/* for custom scrollbar for webkit browser*/
+
+/*
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+*/
+
+.bourbon-button {
+	background-color: $blue;
+}
+
+
+
+
+
+
+
+
+
+
+//MIXIN BEING USED ШЛЯПА!!!!!!!!!!!!
+.tri-test{
+ @include triangle(40px, 40px, $pink, $blue, right);
+  margin: 50px auto;
+  //background-color: $blue;
+}
+
+  /*
+  &:hover {
+    background: #fff;
+    cursor: pointer;
+  }
+  */
+
+
+.form-content {
+	@extend .recall;
+}
+
+#map {
+	margin: 30px 10px;
+}
+
+
+.two-column {
+	@include flexbox;
+	@include flex-direction(row);
+	@include flex-wrap(nowrap);
+	@include justify-content(space-around);
+	@include align-items(stretch);
+	padding: 0 50px;
+	@include respond-to(2) { 
+		@include flex-direction(column);
+		@include align-items(center);
+		padding: 0 10px;
+	}
+	//width: 100%;
+	
+	form {
+		margin: 10px;
+		//background-color: #ccc;
+		width: 400px;
+		@include respond-to(5) { 
+			width: 300px;
+		}
+		.form-group {
+
+			label {
+				width: 100%;
+				display: block;
+			}
+			.input-group {
+			}
+
+		}
+	}
+	section {
+		margin: 10px;
+		//background-color: #eee;
+		//width: 400px;
+		@include respond-to(2) { 
+			width: 100%;
+		}
+		//height: 400px;
+		@include respond-to(5) { 
+			width: 100%;
+		}
+		.text {
+			padding: 0 10px;
+			height: 100%;
+			@extend %line-height-size;
+			font-size: $text-size;
+			//background-color: #191919;
+		}
+	}
+}

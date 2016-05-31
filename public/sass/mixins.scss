@@ -1,0 +1,353 @@
+/*
+	@include border-radius-part(top,10px);
+*/
+@mixin border-radius-part($part, $radius) { 
+	@if $part == 'all' { 
+		-webkit-border-radius: $radius; 
+		-moz-border-radius: $radius; 
+		-ms-border-radius: $radius; 
+		border-radius: $radius; 
+	}
+	@else {
+		-webkit-border-#{$part}: $radius; 
+		-moz-border-#{$part}: $radius; 
+		-ms-border-#{$part}: $radius; 
+		border-#{$part}: $radius; 
+	}
+	
+}
+/*
+	@include border-radius(10px);
+*/
+@mixin border-radius($radius) { 
+	-webkit-border-radius: $radius; 
+	-moz-border-radius: $radius; 
+	-ms-border-radius: $radius; 
+	border-radius: $radius; 
+}
+/*
+	@include duration(2s);
+*/
+@mixin duration($a) { 
+	-webkit-transition-duration: $a; 
+	-o-transition-duration: $a; 
+	-moz-transition-duration: $a; 
+	transition-duration: $a; 
+}
+/*
+	@include rotate(90);
+*/
+@mixin rotate($d) { 
+	transform:rotate($d+deg); 
+ 	-ms-transform:rotate($d+deg); 
+ 	-webkit-transform:rotate($d+deg); 
+ 	-o-transform: rotate($d+deg); 
+}
+/*
+  @include scale(90);
+*/
+@mixin scale($d) { 
+  transform:scale($d*0.01); 
+  -ms-transform:scale($d*0.01); 
+  -webkit-transform:scale($d*0.01); 
+  -o-transform: scale($d*0.01); 
+}
+/*
+	@include box-shadow(0,2px,5px,#ccc);
+*/
+@mixin box-shadow($left, $top, $blur, $color){ 
+ 	-moz-box-shadow: $left $top $blur $color; 
+ 	-webkit-box-shadow: $left $top $blur $color; 
+ 	box-shadow: $left $top $blur $color; 
+}
+/*
+	@include transition(top 1s ease-out 0.5s);
+*/
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+/*
+  @include transition(top 1s ease-out 0.5s);
+*/
+@mixin transition-duration($args...) {
+  -webkit-transition-duration: $args;
+  -moz-transition-duration: $args;
+  -ms-transition-duration: $args;
+  -o-transition-duration: $args;
+  transition-duration: $args;
+}
+/*
+	@include opacity(80);
+*/
+@mixin opacity($p) {
+ 	opacity: $p*0.01;
+ 	-webkit-opacity: $p*0.01;
+ 	-khtml-opacity: $p*0.01;
+ 	-moz-opacity: $p*0.01;
+ 	filter:alpha(opacity=$p);
+ 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$p)";
+}
+/*
+	@include size(100px);
+	@include size(200px, 100px);
+*/
+@mixin size($width, $height: $width) {
+      width: $width;
+      height: $height;
+}
+/*
+	@include bg(#aaaaaa, #efefef);
+*/
+@mixin bg($top, $btm) {
+	background: $top;
+	background: -moz-linear-gradient(top, $top 0%, $btm 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$btm));
+	background: -webkit-linear-gradient(top, $top 0%,$btm 100%);
+	background: -o-linear-gradient(top, $top 0%,$btm 100%);
+	background: -ms-linear-gradient(top, $top 0%,$btm 100%);
+	background: linear-gradient(to bottom, $top 0%,$btm 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top', endColorstr='$btm',GradientType=0 );
+}
+/*
+	@include border(all, #ccc, 1px);
+	@include border(top, #ccc, 1px);
+*/
+@mixin border($place, $color, $width) {
+	@if $place == 'all' {
+		border: $width solid $color;
+	} 
+	@else {
+		border-#{$place}: $width solid $color;
+	}
+}
+/*
+	@include fader(hide);
+	@include fader(show);
+*/
+
+@mixin fader($status) {
+  @if $status == 'hide' {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s;
+  }
+  @else if $status == 'show' {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.5s, opacity 0.5s;
+  }
+}
+/*
+	@include up-fader(hide);
+	@include up-fader(show);
+*/
+@mixin up-fader($status) {
+  @if $status == 'hide' {
+    display: none;
+  }
+}
+@mixin down-fader($status) {
+  @if $status == 'hide' {
+    //display: none;
+    margin-top: -30%;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    //transition: visibility 0.5s, opacity 0.5s;
+  }
+  @else if $status == 'show' {
+    //display: 'block';
+    margin-top: 0%;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    //transition: visibility 0.5s, opacity 0.5s;
+  }
+}
+/*
+	@include respond-to(handhelds) { width: 100% ;}
+  	@include respond-to(medium-screens) { width: 125px; }
+  	@include respond-to(wide-screens) { float: none; }
+*/
+//$break-small: 320px;
+
+$break-step-5: 500px;
+$break-step-4: 400px;
+$break-step-3: 600px;
+$break-step-2: 800px;
+$break-step-1: 1000px;
+$break-step-0: 1200px;
+
+@mixin respond-to($media) {
+	@if $media == 1 {
+    	@media only screen and (max-width: $break-step-1) { @content; }
+  	}
+    @else if $media == 0 {
+      @media only screen and (max-width: $break-step-0) { @content; }
+    }
+  	@else if $media == 12 {
+    	@media only screen and (min-width: $break-step-2) and (max-width: $break-step-1) { @content; }
+  	}
+  	@else if $media == 2 {
+    	@media only screen and (max-width: $break-step-2) { @content; }
+  	}
+  	@else if $media == 3 {
+    	@media only screen and (max-width: $break-step-3) { @content; }
+  	}
+  	@else if $media == 4 {
+    	@media only screen and (max-width: $break-step-4) { @content; }
+  	}
+  	@else if $media == 5 {
+    	@media only screen and (max-width: $break-step-5) { @content; }
+  	}
+}
+
+/*
+  @include keyframes(spin) {
+    0% { margin-top: -200px; }
+    100% { margin-top: 0px; }
+  }
+  @include animation(spin 1s infinite linear);
+*/
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+/*
+  @include animation(tick .2s ease-in-out);
+*/
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+$bkg: #fff;
+/*
+  Градиентный треугольник 
+  @include triangle(40px, 40px, $pink, $blue, right);
+
+*/
+@mixin triangle($half-width, $height, $color-a, $color-b, $direction){
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(-40deg,$color-a, $color-b);
+  background: -webkit-linear-gradient(-40deg,$color-a, $color-b);
+  background: -moz-linear-gradient(-40deg,$color-a, $color-b);
+  width: 2 * $half-width;
+
+  height: $height;
+  &:before, &:after{
+    position: absolute;
+    content:'';
+    }
+  @if $direction=="up"{
+     &:before, &:after{
+     border-left:$half-width solid transparent;
+     border-right: $half-width solid transparent;
+    border-top: $height solid $bkg;
+  }
+  &:before{
+    margin-left: $half-width * -1;
+  }
+  &:after{
+    margin-left: $half-width;
+  }
+  }
+  @else if $direction=="down"{
+     &:before, &:after{
+     border-left: $half-width solid transparent;
+     border-right: $half-width solid transparent;
+    border-bottom: $height solid $bkg;
+  }
+  &:before{
+    margin-left: $half-width * -1;
+  }
+  &:after{
+    margin-left: $half-width;
+  }
+  }
+  @else if $direction=="left"{
+     &:before, &:after{
+     border-top: $height / 2 solid transparent;
+     border-bottom: $height / 2 solid transparent;
+    border-left:  $half-width * 2 solid $bkg;
+  }
+  &:before{
+    margin-top: ($height / 2) * -1;
+  }
+  &:after{
+    margin-top: $height / 2;
+  }
+  }
+  @else if $direction=="right"{
+   &:before, &:after{
+     border-top: $height / 2 solid transparent;
+     border-bottom: $height / 2 solid transparent;
+    border-right:  $half-width * 2 solid $bkg;
+  }
+  &:before{
+    margin-top: ($height / 2) * -1;
+  }
+  &:after{
+    margin-top: $height / 2;
+  } 
+  }
+}
+
+/*
+  Иконка МЕНЮ(ГАМБУРГЕР)
+  @include icon(3px, 30px);
+*/
+@mixin icon($height, $width) {
+  @include transition-duration(0.5s);
+  height: $height;
+  width: $width;
+  top: 22px;
+  background-color: $blue;
+}
+/*
+  @include icon-before(3px, 30px, -7px);
+*/
+@mixin icon-before($height, $width, $top) {
+  @include transition-duration(0.5s);
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $blue;
+  content: "";
+  top: $top;
+}
+/*
+  @include icon-after(3px, 30px, 7px);
+*/
+@mixin icon-after($height, $width, $top) {
+  @include transition-duration(0.5s);
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $blue;
+  content: "";
+  top: $top;
+}

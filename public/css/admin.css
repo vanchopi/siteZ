@@ -1,0 +1,712 @@
+@charset "UTF-8";
+/*
+	@include border-radius-part(top,10px);
+*/
+/*
+	@include border-radius(10px);
+*/
+/*
+	@include duration(2s);
+*/
+/*
+	@include rotate(90);
+*/
+/*
+  @include scale(90);
+*/
+/*
+	@include box-shadow(0,2px,5px,#ccc);
+*/
+/*
+	@include transition(top 1s ease-out 0.5s);
+*/
+/*
+  @include transition(top 1s ease-out 0.5s);
+*/
+/*
+	@include opacity(80);
+*/
+/*
+	@include size(100px);
+	@include size(200px, 100px);
+*/
+/*
+	@include bg(#aaaaaa, #efefef);
+*/
+/*
+	@include border(all, #ccc, 1px);
+	@include border(top, #ccc, 1px);
+*/
+/*
+	@include fader(hide);
+	@include fader(show);
+*/
+/*
+	@include up-fader(hide);
+	@include up-fader(show);
+*/
+/*
+	@include respond-to(handhelds) { width: 100% ;}
+  	@include respond-to(medium-screens) { width: 125px; }
+  	@include respond-to(wide-screens) { float: none; }
+*/
+/*
+  @include keyframes(spin) {
+    0% { margin-top: -200px; }
+    100% { margin-top: 0px; }
+  }
+  @include animation(spin 1s infinite linear);
+*/
+/*
+  @include animation(tick .2s ease-in-out);
+*/
+/*
+  Градиентный треугольник 
+  @include triangle(40px, 40px, $pink, $blue, right);
+
+*/
+/*
+  Иконка МЕНЮ(ГАМБУРГЕР)
+  @include icon(3px, 30px);
+*/
+/*
+  @include icon-before(3px, 30px, -7px);
+*/
+/*
+  @include icon-after(3px, 30px, 7px);
+*/
+/*  
+	FONT SIZE  
+*/
+/*  
+	BUTTON
+*/
+/* line 16, C:/www/htdocs/laravel.gfootball/public/sass/base.scss */
+.modal-footer .btn, .submitbutton button {
+  border: none;
+  -webkit-transition: top 250ms ease-out 250ms;
+  -moz-transition: top 250ms ease-out 250ms;
+  -ms-transition: top 250ms ease-out 250ms;
+  -o-transition: top 250ms ease-out 250ms;
+  transition: top 250ms ease-out 250ms;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+  width: 190px;
+  height: 36px;
+  display: inline-block;
+  color: #424242;
+  background-color: #FFF;
+  text-align: center;
+  line-height: 36px;
+  outline: 0;
+  padding: 0 2rem;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  letter-spacing: .5px;
+  outline: none;
+  cursor: pointer; }
+  /* line 34, C:/www/htdocs/laravel.gfootball/public/sass/base.scss */
+  .modal-footer .btn:hover, .submitbutton button:hover {
+    background-color: #FFF;
+    -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18); }
+  /* line 38, C:/www/htdocs/laravel.gfootball/public/sass/base.scss */
+  .modal-footer .btn:active, .submitbutton button:active {
+    background-color: #fff;
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18); }
+  /* line 42, C:/www/htdocs/laravel.gfootball/public/sass/base.scss */
+  .modal-footer .hide.btn, .submitbutton button.hide {
+    margin-top: -30%;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out; }
+  /* line 45, C:/www/htdocs/laravel.gfootball/public/sass/base.scss */
+  .modal-footer .show.btn, .submitbutton button.show {
+    margin-top: 0%;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out; }
+  /* line 48, C:/www/htdocs/laravel.gfootball/public/sass/base.scss */
+  .modal-footer .btn:disabled, .submitbutton button:disabled {
+    background-color: #eee; }
+    /* line 50, C:/www/htdocs/laravel.gfootball/public/sass/base.scss */
+    .modal-footer .btn:disabled:hover, .submitbutton button:disabled:hover {
+      -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+      -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16); }
+
+/*  
+	H1-5 EXTENDS
+*/
+@font-face {
+  font-family: SourceSansPro;
+  src: url("../fonts/SourceSansPro/SourceSansPro-Light.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/Roboto/Roboto-Light.ttf"); }
+
+/* line 18, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+html, body {
+  min-height: 100%; }
+
+/* line 21, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+  background-color: #fff; }
+
+/* line 29, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.form-container {
+  /*
+  @include box-shadow(0,2px,10px,#ccc);
+  background-color: #fff;
+  */
+  padding-bottom: 30px; }
+
+/* line 45, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+#welcome {
+  width: 100%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle; }
+  /* line 50, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #welcome .content {
+    text-align: center;
+    display: inline-block; }
+  /* line 54, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #welcome .title {
+    font-size: 96px;
+    margin: 20px 0;
+    font-family: 'Lato',Roboto; }
+  /* line 59, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #welcome .login {
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    padding: 40px 0; }
+  /* line 69, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #welcome .login input {
+    color: #292929; }
+  /* line 72, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #welcome .login label {
+    font-size: 1em;
+    font-weight: normal; }
+
+/* ------------------- PRELOADER LOGIN ------------------- */
+/* ------------------- PRELOADER LOGIN ------------------- */
+/* ------------------- PRELOADER LOGIN ------------------- */
+/* ------------------- END PRELOADER LOGIN ------------------- */
+/* ------------------- END PRELOADER LOGIN ------------------- */
+/* ------------------- END PRELOADER LOGIN ------------------- */
+/* line 87, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+#question {
+  padding-top: 100px;
+  text-align: center;
+  vertical-align: middle; }
+  /* line 91, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question .content {
+    text-align: center;
+    display: inline-block; }
+  /* line 95, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question .title {
+    font-size: 96px;
+    margin: 20px 0;
+    font-family: Lato; }
+  /* line 100, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question .login {
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    padding: 40px 0; }
+  /* line 109, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question table {
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 500px; }
+    /* line 116, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    #question table tr td {
+      text-align: left;
+      border: none; }
+  /* line 121, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question .progress {
+    background-color: #fff;
+    box-shadow: 0 0px 10px #ccc inset; }
+  /* line 125, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question .progress-bar {
+    background-color: #00FFFB;
+    box-shadow: 0 0px 10px #fff inset; }
+  /* line 129, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question .answer {
+    color: #595959;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out; }
+  /* line 139, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question .answer-take {
+    animation: answerselect 1s infinite alternate; }
+  /* line 142, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #question .answer:hover {
+    color: #191919; }
+
+/* ------------- КРУТИМ ------------- */
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg); } }
+
+@-moz-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg); } }
+
+@-ms-keyframes spin {
+  /* line 149, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg); }
+  /* line 150, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg); } }
+
+@-o-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg); } }
+
+/* line 155, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.login .has-error label, .login .has-error input, .login .has-error .help-block {
+  color: #A9446C; }
+
+/* line 160, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.support-action {
+  text-align: right; }
+  /* line 162, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .support-action li {
+    list-style: none;
+    font-size: 14px;
+    padding: 0 10px;
+    display: inline-block; }
+
+/* line 170, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.message {
+  font-size: 20px; }
+
+/* line 174, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+#error {
+  width: 100%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle; }
+  /* line 179, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #error .title {
+    font-size: 96px;
+    margin: 20px 0;
+    font-family: 'Lato'; }
+  /* line 184, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  #error .back a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #191919;
+    background-color: #fff; }
+    /* line 189, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    #error .back a:hover {
+      color: #ccc; }
+
+/* line 196, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+footer {
+  height: 50px; }
+
+/* line 202, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.all-table table td a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #ccc; }
+
+/* line 207, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.all-table table td:nth-last-child(1), .all-table table td:nth-last-child(2) {
+  text-align: center;
+  width: 100px; }
+
+/* line 211, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.all-table table td a:hover {
+  color: #292929; }
+
+/* line 215, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.all-table .sort li a {
+  cursor: pointer; }
+
+/* line 219, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.all-table table .status-false {
+  color: #ccc; }
+
+/* line 222, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.all-table table .status-true {
+  color: #000; }
+
+/* line 228, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.delete_load:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: 25px;
+  border-radius: 100%;
+  border-top: 1px solid #2980B9;
+  border-bottom: 1px solid #2980B9;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  -webkit-animation: spin 0.7s infinite linear;
+  -moz-animation: spin 0.7s infinite linear;
+  -ms-animation: spin 0.7s infinite linear;
+  -o-animation: spin 0.7s infinite linear;
+  animation: spin 0.7s infinite linear; }
+
+/* line 243, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+tr.delete_load:after {
+  margin-top: 10px; }
+
+/* line 247, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.edit {
+  cursor: pointer; }
+
+/* ------------------- MODAL ------------------- */
+/* ------------------- MODAL ------------------- */
+/* ------------------- MODAL ------------------- */
+/* line 255, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.modal-content {
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21); }
+
+/* line 261, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.modal-header {
+  border-bottom: 0;
+  padding: 15px 26px 0px 26px;
+  /*
+  padding-top: 15px;
+  padding-right: 26px;
+  padding-left: 26px;
+  padding-bottom: 0px;
+  */ }
+
+/* line 272, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.modal-content {
+  border-radius: 0; }
+
+/* line 276, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.modal-body {
+  padding: 5px 15px 15px 15px; }
+
+/* line 280, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.modal-footer {
+  border: none; }
+  /* line 284, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .modal-footer .btn.btn-primary {
+    color: #FFF;
+    background-color: #2980B9; }
+    /* line 287, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    .modal-footer .btn.btn-primary:hover {
+      background-color: #2980B9;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
+    /* line 291, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    .modal-footer .btn.btn-primary:focus:active {
+      background-color: #2980B9; }
+
+/*
+.modal-footer {
+  border: none;
+  .btn-default, .btn-primary {
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    color: #424242;
+    background-color: #FFF;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    outline: none;
+  }
+  .btn {
+    outline: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    &:focus, &:hover {
+      outline: none;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+    &:active {
+      outline: none;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      &:focus {
+        outline: none;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+  .btn-default {
+    &:hover {
+      background-color: #FFF;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    }
+    &:focus:active {
+      background-color: #FFF;
+    }
+  }
+  .btn-primary {
+    color: #FFF;
+    background-color: #2980B9;
+    &:hover {
+      background-color: #2980B9;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    }
+    &:focus:active {
+      background-color: #2980B9;
+    }
+  }
+}
+*/
+/* ------------------- MODAL ------------------- */
+/* ------------------- MODAL ------------------- */
+/* ------------------- MODAL ------------------- */
+/* ------------------- ICONS ------------------- */
+/* ------------------- ICONS ------------------- */
+/* ------------------- ICONS ------------------- */
+/* ------------------- ICONS ------------------- */
+/* ------------------- ICONS ------------------- */
+/* ------------------- ICONS ------------------- */
+/* ------------------- FORMS ------------------- */
+/* ------------------- FORMS ------------------- */
+/* ------------------- FORMS ------------------- */
+/* line 375, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.submitbutton button {
+  width: 150px;
+  margin-bottom: 0; }
+  /* line 379, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .submitbutton button:disabled {
+    cursor: pointer; }
+
+/* line 385, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.addform .form-group, .editform .form-group {
+  margin: 0 0; }
+  /* line 389, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .addform .form-group select:disabled, .editform .form-group select:disabled {
+    cursor: pointer; }
+  /* line 393, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .addform .form-group textarea, .editform .form-group textarea {
+    resize: vertical; }
+  /* line 396, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .addform .form-group .textblock, .editform .form-group .textblock {
+    margin: 5px 0 5px 0; }
+  /* line 399, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .addform .form-group p, .editform .form-group p {
+    margin: 0; }
+  /* line 402, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .addform .form-group .control-label, .editform .form-group .control-label {
+    margin-left: 10px;
+    margin-top: 5px; }
+  /* line 408, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .addform .form-group .alltextblock section, .editform .form-group .alltextblock section {
+    margin: 5px 0 0 30px; }
+    /* line 410, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    .addform .form-group .alltextblock section span, .editform .form-group .alltextblock section span {
+      text-align: left;
+      padding: 0 10px;
+      padding-right: 10px; }
+      /* line 414, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+      .addform .form-group .alltextblock section span:first-child, .editform .form-group .alltextblock section span:first-child {
+        width: 100px;
+        display: inline-block; }
+    /* line 419, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    .addform .form-group .alltextblock section input, .editform .form-group .alltextblock section input {
+      width: 100px;
+      display: inline-block; }
+  /* line 425, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .addform .form-group .image-group, .editform .form-group .image-group {
+    margin: 10px 0;
+    position: relative; }
+    /* line 428, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    .addform .form-group .image-group section, .editform .form-group .image-group section {
+      display: inline-block;
+      width: 200px;
+      position: relative; }
+      /* line 432, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+      .addform .form-group .image-group section img, .editform .form-group .image-group section img {
+        width: 200px; }
+    /* line 436, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    .addform .form-group .image-group button, .editform .form-group .image-group button {
+      position: absolute;
+      top: 0;
+      color: red;
+      opacity: .5;
+      right: 0; }
+      /* line 442, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+      .addform .form-group .image-group button:hover, .editform .form-group .image-group button:hover {
+        opacity: .8; }
+    /* line 446, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+    .addform .form-group .image-group .preloadimage, .editform .form-group .image-group .preloadimage {
+      width: 200px;
+      position: absolute; }
+
+/* line 452, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.addform .submitbutton, .editform .submitbutton {
+  text-align: center; }
+
+/* line 455, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.addform .select, .editform .select {
+  width: 200px; }
+
+/* line 458, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.addform .imagesection, .editform .imagesection {
+  margin: 5px 0; }
+
+/* line 461, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.addform .adddelicon, .editform .adddelicon {
+  width: 20px; }
+
+/* line 469, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.news_image {
+  margin-top: 5px; }
+
+/* line 473, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.add_tag, .del_tag {
+  width: 20px; }
+
+/* line 476, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.add_img, .del_img {
+  position: absolute;
+  top: 6px;
+  text-align: right;
+  right: 4px; }
+
+/* line 482, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.newstext {
+  margin-top: 5px; }
+
+/* line 485, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.newsimagestyle {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+/* line 490, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.newsimagesection section {
+  position: relative; }
+
+/* line 493, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.newsimagesection .selected {
+  background-color: #eee; }
+
+/* line 498, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.recall-success {
+  text-align: center;
+  position: fixed;
+  width: 200px;
+  top: 60px;
+  right: 0;
+  border-radius: 0;
+  background-color: #4fbe79;
+  color: #fff;
+  z-index: 1001; }
+
+/* line 510, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.success-change-public {
+  border: 1px solid #4fbe79;
+  box-shadow: 0 0 10px #4fbe79; }
+
+/* ------------------- FORMS ------------------- */
+/* ------------------- FORMS ------------------- */
+/* ------------------- FORMS ------------------- */
+/* line 522, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.checkblock .checkitem h4 {
+  text-align: center;
+  background-color: #696969;
+  color: #fff;
+  padding: 5px 0; }
+
+/* line 528, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.checkblock .checkitem section {
+  display: inline-block; }
+  /* line 530, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+  .checkblock .checkitem section img {
+    width: 150px; }
+
+/* line 534, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.checkblock .checkitem .price {
+  text-align: right;
+  font-size: 1.1em; }
+
+/* line 539, C:/www/htdocs/laravel.gfootball/public/sass/admin.scss */
+.checkblock .allprice {
+  text-align: right;
+  background-color: #eee;
+  font-size: 1.1em;
+  padding: 10px 0; }
