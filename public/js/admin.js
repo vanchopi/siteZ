@@ -41,9 +41,11 @@ Element = {
             headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
             success: function ($list) {
                 element.parent().parent().remove();
+                toastr.success("Запись удалена!");
             },
             error: function (msg) {
                 console.log(msg);
+                toastr.error("Ошибка! Повторите позже.");
             }
         });
     }
@@ -212,9 +214,11 @@ $(document).ready(function() {
             success: function(param)
             {
                 $('.optionname').append('<option value="'+param[0]+'">'+param[1]+','+param[2]+'</option>');//добавляем к существующему списку новый параметр
+                toastr.success("Новый параметр добавлен. Выберите его, что использовать.");
             },
             error: function(msg){
                 console.log(msg);
+                toastr.error("Ошибка! Не удалось добавить новый параметр.");
             }
         });
     });
@@ -255,9 +259,11 @@ $(document).ready(function() {
                     text = text.replace('[img-'+key+']', '');
                     $('.newstext').val(text);
                 }
+                toastr.success("Изображение успешно удалено!");
             },
             error: function (msg) {
                 console.log(msg);
+                toastr.error("Ошибка! Повторите операцию позже.");
             }
         });
     });
@@ -287,9 +293,11 @@ $(document).ready(function() {
                     text = text.replace('[img-'+key+']', '');
                     $('.newstext').val(text);
                 }
+                toastr.success("Изображение успешно удалено!");
             },
             error: function (msg) {
                 console.log(msg);
+                toastr.error("Ошибка! Повторите операцию позже.");
             }
         });
     });
@@ -330,10 +338,11 @@ $(document).ready(function() {
             },
             success: function(res) {
                 element.parent().parent().removeClass('delete_load');
-                alert('Изменения внесены');
+                toastr.success("Изменения внесены!");
             },
             error: function(msg) {
                 console.log(msg);// если ошибка, то можно посмотреть в консоле
+                toastr.error("Изменения внести не удалось");
             }
         });
         
@@ -411,6 +420,7 @@ $(document).ready(function() {
                 setTimeout(function() {
                     element.removeClass('success-change-public');
                 }, 2000);
+                toastr.success("Изменения внесены!");
                 //alert('Изменения внесены');
             },
             error: function(msg) {

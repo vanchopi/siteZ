@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\SCategories;
 use App\Categories;
 use App\SSCategories;
+use Toastr;
 
 class SSCategoriesController extends Controller
 {
@@ -64,7 +65,7 @@ class SSCategoriesController extends Controller
         $sscategory->s_s_category_title=$request->s_s_category_title;
         $sscategory->s_s_category_preview=$preview; //ссылки на картинки
         $sscategory->save(); // Сохраняем все в базу.
-        session(['message' => 'Под-категория добавлена']);
+        Toastr::success('Под-под категория добавлена.', $title = null, $options = []);
         return back();
     }
     public function edit(Request $request)
@@ -79,7 +80,7 @@ class SSCategoriesController extends Controller
         strlen($sscategory->s_s_category_preview) ? $sscategory->s_s_category_preview=explode(';',$sscategory->s_s_category_preview) : $sscategory->s_s_category_preview=[];
         $sscategory->s_s_category_preview=implode(';',array_merge($sscategory->s_s_category_preview,$preview));
         $sscategory->save(); // Сохраняем все в базу.
-        session(['message' => 'Под-категория изменена']);
+        Toastr::success('Под-под категория изменена.', $title = null, $options = []);
         return back();
     }
 }

@@ -158,6 +158,8 @@ return [
 
         //prod
         Collective\Html\HtmlServiceProvider::class,
+        narutimateum\Toastr\ToastrServiceProvider::class,
+        GeneaLabs\LaravelCaffeine\LaravelCaffeineServiceProvider::class,
         //dev
         //Barryvdh\Debugbar\ServiceProvider::class,
         Themsaid\MailPreview\MailPreviewServiceProvider::class,
@@ -212,6 +214,7 @@ return [
         //prod
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Toastr' => narutimateum\Toastr\Facades\Toastr::class,
         //dev
         //'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],

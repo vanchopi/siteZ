@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Categories;
+use Toastr;
+
 class CategoriesController extends Controller
 {
     public $settings;
@@ -43,7 +45,7 @@ class CategoriesController extends Controller
         $category=new Categories;
         $category->category_title=$request->category_title;
         $category->save(); // Сохраняем все в базу.
-        session(['message' => 'Категория добавлена']);
+        Toastr::success('Категория добавлена.', $title = null, $options = []);
         return back();
     }
     public function edit(Request $request)
@@ -51,7 +53,7 @@ class CategoriesController extends Controller
         $category=Categories::find($request->category_id);
         $category->category_title=$request->category_title;
         $category->save(); // Сохраняем все в базу.
-        session(['message' => 'Категория изменена']);
+        Toastr::success('Категория изменена.', $title = null, $options = []);
         return back();
     }
 }

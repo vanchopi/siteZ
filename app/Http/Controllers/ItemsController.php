@@ -15,6 +15,7 @@ use App\SCategories;
 use App\SSCategories;
 use App\Http\Controllers\SettingsController;
 use App\Comments;
+use Toastr;
 
 class ItemsController extends Controller
 {
@@ -297,7 +298,7 @@ class ItemsController extends Controller
         }
 //Сохраняем все параметры и значения в базу
         if(empty($request->option_id)) {
-            return back()->with('message','Товар сохранен');
+            //return back()->with('message','Товар сохранен');
         } //если нет ни одного параметра то просто редиректим обратно.
         else {
             foreach($request->option_id as $key => $value)
@@ -310,7 +311,7 @@ class ItemsController extends Controller
             }
         }
 
-        session(['message' => 'Товар добавлен']);
+        Toastr::success('Товар успешно добавлен.', $title = null, $options = []);
         return back();
 
     }
@@ -325,7 +326,8 @@ class ItemsController extends Controller
         );
         if($validation->fails()) {
             //withInput keep the users info
-            return Redirect::back()->withInput()->withErrors($validation->messages());
+            Toastr::success('Товар успешно изменен.', $title = null, $options = []);
+            return back()->withInput()->withErrors($validation->messages());
         }
         else {
             $files = Input::file('preview');
@@ -351,7 +353,6 @@ class ItemsController extends Controller
             Options::deletevauel($request->id);
 
             if(empty($request->option_id)) {
-                return back()->with('message','Товар сохранен');
             } //если нет ни одного параметра то просто редиректим обратно.
             else {
                 foreach($request->option_id as $key => $value)
@@ -363,7 +364,7 @@ class ItemsController extends Controller
                     $parameters->save();
                 }
             }
-            session(['message' => 'Товар изменен']);
+            Toastr::success('Товар успешно изменен.', $title = null, $options = []);
             return back();
             //return view('add');
         }
@@ -388,7 +389,6 @@ class ItemsController extends Controller
         $url=implode(";",$images); //переделываем массив строку
         $item->preview=$url; //обновляем значение в поле preview
         $item->save(); //сохраняем изменения
-
         return "OK";
     }
 }

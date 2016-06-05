@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\SCategories;
 use App\Categories;
+use Toastr;
+
 class SCategoriesController extends Controller
 {
     public $settings;
@@ -57,7 +59,7 @@ class SCategoriesController extends Controller
         $scategory->s_category_title=$request->s_category_title;
         $scategory->s_category_preview=$preview; //ссылки на картинки
         $scategory->save(); // Сохраняем все в базу.
-        session(['message' => 'Под-категория добавлена']);
+        Toastr::success('Под-категория добавлена.', $title = null, $options = []);
         return back();
     }
     public function edit(Request $request)
@@ -73,7 +75,7 @@ class SCategoriesController extends Controller
         $scategory->s_category_preview=implode(';',array_merge($scategory->s_category_preview,$preview));
 
         $scategory->save(); // Сохраняем все в базу.
-        session(['message' => 'Под-категория изменена']);
+        Toastr::success('Под-категория изменена.', $title = null, $options = []);
         return back();
     }
     public function deleteimage(Request $request)

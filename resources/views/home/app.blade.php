@@ -8,7 +8,7 @@
         <title>Панель управления</title>
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/toastr.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('css/admin.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body id="app-layout">
@@ -109,8 +109,9 @@
     <script src="{{asset('js/angular/angular.min.js')}}"></script>
     <script src="{{asset('js/angular/angular-route.min.js')}}"></script>
     <script src="{{asset('js/angular/controllers.js')}}"></script>
+    <script src="{{asset('js/toastr.min.js')}}"></script>
     <script src="{{asset('js/admin.js')}}"></script>
-
+    {!! Toastr::render() !!}
 </body>
 <!-- МОДАЛЬНОЕ ОКНО -->
 <div class="modal fade" id="editmodal" data-easein="flipXIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

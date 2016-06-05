@@ -1,9 +1,6 @@
 @extends('home.app')
 @section('content')
     <div class="container" ng-app>
-        @if(Session::has('message'))
-            <div class="alert recall-success" style="background-color: {{$settings->color}}">{{Session::pull('message')}}</div>
-        @endif
         <div class="all-table">
             <!-- class = "all-question" -->
             <h3>Все под-категории</h3>

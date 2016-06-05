@@ -1,9 +1,6 @@
 @extends('home.app')
 @section('content')
 <div class="container" ng-app>
-    @if(Session::has('message'))
-    <div class="alert recall-success" style="background-color: {{$settings->color}}">{{Session::pull('message')}}</div>
-    @endif
     <div class="add-form">
         <div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1 col-xs-12 form-container">
             <h3 class="text-center">Добавить товар</h3>
