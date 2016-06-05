@@ -6,14 +6,28 @@
 <div class="content_wrap">
 
 		<div class="tx_l">
-			Товар(подробно)
+			{{$item->category_title}}
+			@if (isset($item->s_category_title))
+				| {{$item->s_category_title}}
+			@endif
+			@if (isset($item->s_s_category_title))
+				| {{$item->s_s_category_title}}
+			@endif
+			| {{$item->title}}
 		</div>
 	    <hr>
 
 	    <div class="main pd_n">
 	    	@include('club-menu')		    
-		    <div class="main_cont">		    		     	
-			    	-bread crumbs-
+		    <div class="main_cont">
+				{{$item->category_title}}
+				@if (isset($item->s_category_title))
+					| {{$item->s_category_title}}
+				@endif
+				@if (isset($item->s_s_category_title))
+					| {{$item->s_s_category_title}}
+				@endif
+				| {{$item->title}}
 			    	<div class="goods_wrap">
 
 			    		<div class="goods_img_wrp">

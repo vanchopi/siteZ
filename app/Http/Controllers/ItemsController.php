@@ -36,7 +36,7 @@ class ItemsController extends Controller
         $options_values = Options::all();
         $categories = Categories::all();
         $option_values = Options::getvalues($id);
-        $item = Items::find($id);
+        $item = Items::findandcategories($id);
 
         $options = collect();
         foreach($option_values as $value) {

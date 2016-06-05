@@ -7,6 +7,7 @@
 
 		<div class="tx_l">
 			{{$categories->category_title}}
+
 		</div>
 	    <hr>
 
