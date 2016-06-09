@@ -11,10 +11,18 @@ use App\Http\Requests;
 use App\OcCountries;
 use App\Checks;
 use App\Phones;
+use App\Categories;
+use Toastr;
+use Illuminate\Support\Facades\Session;
 
 class OrdersController extends Controller
 {
     public $settings;
+
+
+
+
+
 
     public function __construct()
     {
@@ -24,10 +32,14 @@ class OrdersController extends Controller
 
     public function create()
     {
+        $allcategories = Categories::all();
+
+
         $oc_countries = OcCountries::all();
-        return view('check',[
+        return view('order',[
+            'allcategories'=>$allcategories,
             'oc_countries'=>$oc_countries,
-            'settings'=>$this->settings
+
         ]);
     }
 
@@ -95,7 +107,7 @@ class OrdersController extends Controller
             )
         );
         if($validation->fails()) {
-            session(['message' => 'Ошибка']);
+            Toastr::error('Ошибка.', $title = null, $options = []);
             //withInput keep the users info
             return back();
         }
@@ -117,12 +129,54 @@ class OrdersController extends Controller
 
             $check = new Checks;
             $check->order_id = $order->id;
-            $check->check_items_id = '3;8';
-            $check->check_options_id = 'Размер: 25, Цвет: Белый;Размер: 26, Цвет: Черный';
-            $check->check_price = '2500';
+            if(isset($_COOKIE['basket'])) // проверяем, есть ли заказы
+            {
+                $orders = $_COOKIE['basket'];
+                $orders=json_decode($orders); //перекодируем строку из куки в массив с объектами
+            }
+            else
+            {
+                $orders=[];
+            }
+            $total = 0;
+            $items_id = [];
+            $support_options = [];
+            $items_count = [];
+            $tshort_num = [];
+            $tshort_name = [];
+            foreach ($orders as $order) {
+                $total += $order->price*$order->amount;
+                $items_id[] = $order->item_id;
+                $items_count[] = $order->amount;
+                if (isset($order->options)) {
+                    $support_options[] = $order->options;
+                }
+                if (isset($order->tshort_num)) {
+                    $tshort_num[] = $order->tshort_num;
+                    $tshort_name[] = $order->tshort_name;
+                }
+            }
+            $items_id = implode(';',$items_id);
+            $items_count = implode(';',$items_count);
+            $support_options = implode(';',$support_options);
+            $tshort_num = implode(';',$tshort_num);
+            $tshort_name = implode(';',$tshort_name);
+
+
+            $check->check_items_id = $items_id;
+            $check->check_items_count = $items_count;
+            $check->check_options_id = $support_options;
+            $check->check_tshort_num = $tshort_num;
+            $check->check_tshort_name = $tshort_name;
+            $check->check_price = $total;
             $check->save();
-            session(['message' => 'Заказ успешно отправлен']);
-            return back();
+
+            if(isset($_COOKIE['basket'])) // проверяем, есть ли заказы
+            {
+                setcookie('basket','', time()-3600, '/siteZ/public');
+            }
+            Toastr::success('Заказ добавлен', $title = null, $options = []);
+            return route('site.items.index');
         }
 
     }

@@ -47,12 +47,10 @@ class ChecksController extends Controller
     {
         $check = Checks::find($id);
         $items = Checks::findItems(explode(';',$check->check_items_id));
-        $option = explode(';',$check->check_options_id);
 
         return view('home.checks.one',[
             'check'=>$check,
-            'items'=>$items,
-            'option'=>$option
+            'items'=>$items
         ]);
 
     }

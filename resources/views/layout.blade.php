@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/toastr.min.css')}}" rel="stylesheet" type="text/css">
         <link rel="stylesheet/less" type="text/css" href="{{asset('less/normalize.less')}}">
         <link rel="stylesheet/less" type="text/css" href="{{asset('less/styles.less')}}">
         <script src="{{asset('js/less.min.js')}}" type="text/javascript"></script>
@@ -12,8 +13,10 @@
         jquery-2.2.0.min.js
         <link rel="stylesheet" type="text/css" href="/css/normalize.css" />-->
         <script type="text/javascript" src="{{asset('js/jquery-2.2.0.min.js')}}"></script>
+        <script src="{{asset('js/jquery.cookie.js')}}"></script>
         <script type='text/javascript' src="{{asset('fancybox/source/jquery.fancybox.pack.js')}}"></script>
         <script src="{{asset('js/myscript.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/toastr.min.js')}}"></script>
         <title>gfootball | футбольная форма и атрибутика</title>
     </head>
     <body>
@@ -33,12 +36,13 @@
                     </div>
                     <div class="ib h_regim wd">
                         <span>Режим работы: 24/7</span>
-                       <a href="basket"><span class="ib">Корзина:</span>
+                       <a href="{{route('basket')}}"><span class="ib">Корзина: <span class="count_order"></span> </span>
                             <div class="h_basket ib">
                                 <div>
                                     <img src="{{asset('/img/basket.png')}}">
                                 </div>
                             </div>
+
                        </a> 
                     </div>
                     <div class="h_buy">
@@ -60,7 +64,7 @@
                     </li>
                     @foreach($allcategories as $category)
                         <li>
-                            <a class="wd_m" href="{{route('site.items.category',$category->category_id)}}">
+                            <a class="wd_m" href="{{route('site.items.category',$category->category_title)}}">
                                 <span>{{$category->category_title}}</span>
                             </a>
                         </li>
@@ -113,5 +117,7 @@
 
             </div>
         </div>
+        {!! Toastr::render() !!}
     </body>
+
 </html>

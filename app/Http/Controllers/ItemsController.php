@@ -29,14 +29,15 @@ class ItemsController extends Controller
     }
 
 
-    public function one($id)
+    public function one($title)
     {
         $allcategories = Categories::all();
-
         $options_values = Options::all();
         $categories = Categories::all();
-        $option_values = Options::getvalues($id);
-        $item = Items::findandcategories($id);
+
+        $item = Items::where('title',$title)->first();
+        $option_values = Options::getvalues($item->id);
+        $item = Items::findandcategories($item->id);
 
         $options = collect();
         foreach($option_values as $value) {
@@ -66,12 +67,14 @@ class ItemsController extends Controller
             'items'=>$items
         ]);
     }
-    public function all($id, $s_category_id, $s_s_category_id)
+    public function all($title, $s_category_title, $s_s_category_title)
     {
         $allcategories = Categories::all();
-        $categories = Categories::find($id);
-        $scategories = SCategories::find($s_category_id);
-        $sscategories = SSCategories::find($s_s_category_id);
+        $categories = Categories::where('category_title',$title)->first();
+        $scategories = SCategories::where('s_category_title',$s_category_title)->first();
+        $sscategories = SSCategories::where('s_s_category_title',$s_s_category_title)->first();
+
+        $s_s_category_id = $sscategories->s_s_category_id;
 
         //$items = Items::all();
         $items = Items::findSSCategory($s_s_category_id);
@@ -84,27 +87,15 @@ class ItemsController extends Controller
             'items'=>$items
         ]);
     }
-    public function category($id)
+    public function category($title)
     {
         $allcategories = Categories::all();
 
-        $categories = Categories::find($id);
+        $categories = Categories::where('category_title',$title)->first();
+
+        $id = $categories->category_id;
         $scategories_need = SCategories::findparent($id);
 
-        /*
-        $collection = collect();
-        foreach($scategories_need as $value) {
-            if (!$collection->contains($value->s_category_id)) {
-                $collection->push($value->s_category_id);
-            }
-        }
-        $sscategories_need = SCategories::findchildren($collection);
-        $categ = SCategories::categoryforkey($collection);
-
-
-        $scategories = SCategories::all();
-        $sscategories = SSCategories::all();
-        */
         if (empty($scategories_need)) {
             $items = Items::findCategory($id);
             return view('items',[
@@ -115,36 +106,22 @@ class ItemsController extends Controller
             ]);
         }
         else {
-            return view('clubs',[
+            return view('category',[
                 'allcategories'=>$allcategories,
 
                 'categories'=>$categories,
                 'scategories_need'=>$scategories_need
             ]);
         }
-        /*
-        return view('clubs',[
-            'allcategories'=>$allcategories,
-
-            'categories'=>$categories,
-            'scategories'=>$scategories,
-            'sscategories'=>$sscategories,
-            'scategories_need'=>$scategories_need,
-
-            'sscategories_need'=>$sscategories_need,
-            'categ'=>$categ,
-            'collection'=>$collection
-        ]);
-        */
     }
-    public function scategory($id, $s_category_id)
+    public function scategory($title, $s_category_title)
     {
         $allcategories = Categories::all();
 
+        $categories = Categories::where('category_title',$title)->first();
+        $scategories = SCategories::where('s_category_title',$s_category_title)->first();
 
-
-        $categories = Categories::find($id);
-        $scategories = SCategories::find($s_category_id);
+        $s_category_id = $scategories->s_category_id;
 
 
         $sscategories_need = SSCategories::findparent($s_category_id);

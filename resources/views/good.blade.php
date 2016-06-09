@@ -6,12 +6,12 @@
 <div class="content_wrap">
 
 		<div class="tx_l">
-			{{$item->category_title}}
+			<a href="{{route('site.items.category',$item->category_title)}}">{{$item->category_title}}</a>
 			@if (isset($item->s_category_title))
-				| {{$item->s_category_title}}
+				| <a href="{{route('site.items.scategory',[$item->category_title,$item->s_category_title])}}">{{$item->s_category_title}}</a>
 			@endif
 			@if (isset($item->s_s_category_title))
-				| {{$item->s_s_category_title}}
+				| <a href="{{route('site.items.all',[$item->category_title,$item->s_category_title,$item->s_s_category_title])}}">{{$item->s_s_category_title}}</a>
 			@endif
 			| {{$item->title}}
 		</div>
@@ -20,12 +20,13 @@
 	    <div class="main pd_n">
 	    	@include('club-menu')		    
 		    <div class="main_cont">
-				{{$item->category_title}}
+
+				<a href="{{route('site.items.category',$item->category_title)}}">{{$item->category_title}}</a>
 				@if (isset($item->s_category_title))
-					| {{$item->s_category_title}}
+					| <a href="{{route('site.items.scategory',[$item->category_title,$item->s_category_title])}}">{{$item->s_category_title}}</a>
 				@endif
 				@if (isset($item->s_s_category_title))
-					| {{$item->s_s_category_title}}
+					| <a href="{{route('site.items.all',[$item->category_title,$item->s_category_title,$item->s_s_category_title])}}">{{$item->s_s_category_title}}</a>
 				@endif
 				| {{$item->title}}
 			    	<div class="goods_wrap">
@@ -36,7 +37,7 @@
 				    				<div class="first_wrp">
 					    				<div class="first_img">
 					    					<a rel="grouop" href="{{asset('img/items/'.explode(';',$item->preview)[0])}}">
-					    						<img src="{{asset('img/items/'.explode(';',$item->preview)[0])}}">
+					    						<img class="out-image" src="{{asset('img/items/'.explode(';',$item->preview)[0])}}">
 					    					</a>
 					    				</div>
 					    			</div>
@@ -70,7 +71,7 @@
 				    		</div>
 
 				    		<div class="cost">
-				    			<span>Цена : {{$item->price}} ₽</span>
+				    			<span>Цена : <span class="price">{{$item->price}}</span> ₽</span>
 				    		</div>
 				    		<div class="quant">
 				    			<span class="ib">Колличество : </span>
@@ -90,14 +91,17 @@
 				    				<a href="#">- таблица размеров -</a>
 				    			</div>
 				    		</div>
-
 							@if($options->contains(1))
 								<section class="support size">
 									<h4>Размер</h4>
 									<div class="support_buttons">
-										@foreach($option_values as $values)
-											@if($values->option_id == 3)
-												<button class="size_item" value="{{$values->value}} {{$values->option_unit}}" data-type="size">{{$values->value}}</button>
+										@foreach($option_values as $key => $values)
+											@if($values->option_id == 1)
+												@if($key == 0)
+													<button class="size_item select" value="{{$values->option_title}}: {{$values->value}} {{$values->option_unit}}" data-type="size">{{$values->value}}</button>
+												@else
+													<button class="size_item" value="{{$values->option_title}}: {{$values->value}} {{$values->option_unit}}" data-type="size">{{$values->value}}</button>
+												@endif
 											@endif
 										@endforeach
 									</div>
@@ -106,7 +110,7 @@
 							@if($options->contains(1))
 				    		<div class="size_bar">
 								@foreach($option_values as $values)
-									@if($values->option_id == 1)
+									@if($values->option_id == 3)
 										<div class="item">
 											<div>{{$values->value}}</div>
 										</div>
@@ -115,20 +119,22 @@
 				    		</div>
 							@endif
 
-				    		<div class="get_num nm">
-				    			<input placeholder="Нанести №">
+							@if ($item->category_id == 1 || $item->category_id == 2)
+								<div class="get_num nm">
+									<input placeholder="Нанести №" class="tshort-num">
+								</div>
+
+								<div class="get_num snm">
+									<input placeholder="Нанести фамилию" class="tshort-name">
+								</div>
+							@endif
+
+				    		<div class="bt_add">
+								<div class="add">
+									<div class="basket-add" data-id="{{$item->id}}">Добавить в корзину</div>
+								</div>
 				    		</div>
 
-				    		<div class="get_num snm">
-				    			<input placeholder="Нанести фамилию">
-				    		</div>
-				    		<div class="bt_add">
-					    		<a href="/basket/">
-						    		<div class="add">
-						    			<div>Добавить в корзину</div>
-						    		</div>
-					    		</a>
-				    		</div>
 				    	</div>	
 			    	</div>		    	
 			</div>
