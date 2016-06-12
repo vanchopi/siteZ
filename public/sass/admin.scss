@@ -543,3 +543,8 @@ tr.delete_load:after {
     padding: 10px 0;
   }
 }
+
+.toast {
+  top: 50px;
+  @include box-shadow(0,0,5px,#ccc);
+}

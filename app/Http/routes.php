@@ -21,15 +21,53 @@ Route::get('/', function () {
 
 Route::get('/',           ['uses' => 'ItemsController@index',           'as' => 'site.items.index']);
 
-Route::get('/good/{id}',           ['uses' => 'ItemsController@one',           'as' => 'site.items.one']);
+Route::get('/Товар/{title}',           ['uses' => 'ItemsController@one',           'as' => 'site.items.one']);
 
 
-Route::get('/category/{id}',           ['uses' => 'ItemsController@category',           'as' => 'site.items.category']);
 
-Route::get('/category/{id}/{s_category_id}',           ['uses' => 'ItemsController@scategory',           'as' => 'site.items.scategory']);
+/*
+    Категории
+*/
+Route::get('/Категория/{title}',
+    [
+        'uses' => 'ItemsController@category',
+        'as' => 'site.items.category'
+    ]
+);
+Route::get('/Категория/{title}/{s_category_title}',
+    [
+        'uses' => 'ItemsController@scategory',
+        'as' => 'site.items.scategory'
+    ]
+);
+Route::get('/Категория/{title}/{s_category_title}/{s_s_category_title}',
+    [
+        'uses' => 'ItemsController@all',
+        'as' => 'site.items.all'
+    ]
+);
+
+/*
+    Корзина
+*/
+Route::get('/Корзина',           ['uses' => 'BasketController@index',           'as' => 'basket']);
+Route::get('/basket/clear',           ['uses' => 'BasketController@clear',           'as' => 'basket.clear']);
 
 
-Route::get('/category/{id}/{s_category_id}/{s_s_category_id}',           ['uses' => 'ItemsController@all',           'as' => 'site.items.all']);
+
+
+
+Route::get('/Заказ',           ['uses' => 'OrdersController@create',           'as' => 'order.create']);
+Route::post('orderadd',           ['uses' => 'OrdersController@add',           'as' => 'ordersadd']);
+Route::post('basketadd',           ['uses' => 'OrdersController@add',           'as' => 'basketadd']);
+
+
+
+
+
+
+
+
 
 
 /*
@@ -42,12 +80,7 @@ Route::get('/good/', function () {
     return view('good');
 });
 */
-Route::get('/basket/', function () {
-    return view('basket');
-});
-Route::get('/order/', function () {
-    return view('order');
-});
+
 Route::get('/n-teams/', function () {
     return view('n-teams');
 });
@@ -161,7 +194,7 @@ Route::group(['prefix' => 'home','middleware' => ['web']], function() {
     Route::get('ordersphone',           ['uses' => 'OrdersController@phoneall',           'as' => 'ordersphone']);
     Route::get('ordersphoneusers',           ['uses' => 'OrdersController@phoneusers',           'as' => 'ordersphoneusers']);
 
-    Route::post('orderadd',           ['uses' => 'OrdersController@add',           'as' => 'ordersadd']);
+
     Route::post('changestatus',           ['uses' => 'OrdersController@changestatus',           'as' => 'changestatus']);
     Route::post('phone/{id}/delete',            ['uses' => 'OrdersController@phonedelete',                'as' => 'phone.del']);
 

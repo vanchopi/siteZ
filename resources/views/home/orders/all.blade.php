@@ -56,7 +56,7 @@
                                 @endif
                             </select>
                         </td>
-                        <td>{{$order->date}}</td>
+                        <td>{{$order->created_at}}</td>
                         <td>
                             <a class="edit" data-toggle="modal" data-target="#editmodal" url-action="editmodal" url="{{route('order.show',$order->id)}}">Посмотреть</a>
                         </td>

@@ -7,6 +7,7 @@
 
 		<div class="tx_l">
 			{{$categories->category_title}}
+
 		</div>
 	    <hr>
 
@@ -118,7 +119,7 @@
 
 				@foreach($scategories_need as $item)
 					<div class="item">
-						<a href="{{route('site.items.scategory',[$categories->category_id,$item->s_category_id])}}">
+						<a href="{{route('site.items.scategory',[$categories->category_title,$item->s_category_title])}}">
 						<div class="wrp_item">
 							<div class="img_wrp ">
 								<img src="{{asset('/img/categories/'.$item->s_category_preview)}}" class="rad_cl">

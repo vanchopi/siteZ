@@ -14,6 +14,10 @@ class Checks extends Model
         $items = DB::table('items')
             ->whereIn('items.id', $itemsid)
             ->get();
+        $query = [];
+        foreach($items as $item) {
+            $query[$item->id] = DB::table('items')->where('items.id', $item->id)->get();
+        }
 
 
 
@@ -35,7 +39,7 @@ class Checks extends Model
             ->get();
 
         */
-        return $items;
+        return $query;
     }
     public static function findOptions($optionsid) {
 

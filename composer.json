@@ -10,7 +10,9 @@
         "barryvdh/laravel-debugbar": "v2.2.0",
         "laravelcollective/html": "v5.2.4",
         "pusher/pusher-php-server": "2.1.2",
-        "themsaid/laravel-mail-preview": "v1.2.2"
+        "themsaid/laravel-mail-preview": "v1.2.2",
+        "narutimateum/toastr-5.2-laravel": "dev-master",
+        "genealabs/laravel-caffeine": "0.3.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

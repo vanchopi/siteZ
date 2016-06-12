@@ -19,6 +19,7 @@
 		     		</div>	
 		     		<div class="c_desc">
 		     			<span>Описание</span>
+						<div class="fee">1000 ₽</div>
 		     		</div>
 		     		<div class="buy">
 		     			<button>Купить</button>
@@ -32,6 +33,7 @@
 		     		</div>	
 		     		<div class="c_desc">
 		     			<span>Описание</span>
+						<div class="fee">1000 ₽</div>
 		     		</div>
 		     		<div class="buy">
 		     			<button>Купить</button>
@@ -45,6 +47,7 @@
 		     		</div>	
 		     		<div class="c_desc">
 		     			<span>Описание</span>
+						<div class="fee">1000 ₽</div>
 		     		</div>
 		     		<div class="buy">
 		     			<button>Купить</button>
@@ -58,6 +61,7 @@
 		     		</div>	
 		     		<div class="c_desc">
 		     			<span>Описание</span>
+						<div class="fee">1000 ₽</div>
 		     		</div>
 		     		<div class="buy">
 		     			<button>Купить</button>
@@ -86,10 +90,11 @@
 					<div class="item">
 						<div class="wrp_item">
 							<div class="img_wrp">
-								<img src="{{asset('img/items/'.explode(';',$item->preview)[0])}}">
+								<a href="{{route('site.items.one',$item->title)}}"><img src="{{asset('img/items/'.explode(';',$item->preview)[0])}}"></a>
 							</div>
 							<div class="c_desc">
-								<span><a href="{{route('site.items.one',$item->id)}}">{{$item->title}}</a></span>
+								<span><a href="{{route('site.items.one',$item->title)}}">{{$item->title}}</a></span>
+								<div class="fee">{{$item->price}} ₽</div>
 							</div>
 							<div class="buy">
 

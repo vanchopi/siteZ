@@ -24,6 +24,38 @@ class Items extends Model
         return DB::table('items')->where('items.category_id',$category_id)->get();
 
     }
+    public static function findandcategories($item_id)
+    {
+        $query = DB::table('items')->where('items.id',$item_id)->first();
+
+        if ($query->category_id != null) {
+            if($query->s_category_id != null) {
+                if($query->s_s_category_id != null) {
+                    return DB::table('items')->where('items.id',$item_id)
+                        ->join('categories','items.category_id','=','categories.category_id')
+                        ->join('s_categories','items.s_category_id','=','s_categories.s_category_id')
+                        ->join('s_s_categories','items.s_s_category_id','=','s_s_categories.s_s_category_id')
+                        ->select('items.*', 'categories.category_title', 's_categories.s_category_title', 's_s_categories.s_s_category_title' )
+                        ->first();
+                }
+                else {
+                    return DB::table('items')->where('items.id',$item_id)
+                        ->join('categories','items.category_id','=','categories.category_id')
+                        ->join('s_categories','items.s_category_id','=','s_categories.s_category_id')
+                        ->select('items.*', 'categories.category_title', 's_categories.s_category_title')
+                        ->first();
+                }
+            }
+            else {
+                return DB::table('items')->where('items.id',$item_id)
+                    ->join('categories','items.category_id','=','categories.category_id')
+                    ->select('items.*', 'categories.category_title')
+                    ->first();
+            }
+        }
+
+    }
+
 
 
 
