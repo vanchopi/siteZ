@@ -173,7 +173,7 @@ class OrdersController extends Controller
 
             if(isset($_COOKIE['basket'])) // проверяем, есть ли заказы
             {
-                setcookie('basket','', time()-3600, '/siteZ/public');
+                setcookie('basket','', time()-3600, '/');
             }
             Toastr::success('Заказ добавлен', $title = null, $options = []);
             return route('site.items.index');
