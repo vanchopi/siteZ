@@ -32,7 +32,12 @@
                         <span>+7 800 555 35 35</span>
                     </div>
                     <div class="h_mail ib wd">
-                        <span>zorchenko2012@mail.ru</span>
+                        <div>
+                            <a href="#">о нас</a>
+                        </div>
+                        <div>   
+                            <a href="#">как заказать?</a>
+                        </div>    
                     </div>
                     <div class="ib h_regim wd">
                         <span>Режим работы: 24/7</span>
@@ -45,12 +50,7 @@
 
                        </a> 
                     </div>
-                    <div class="h_buy">
-                        <div class="h_how_to ib">
-                            <span>Как купить:</span>
-                        </div>
-                        
-                    </div>
+                    
                 </div>
             </div>
         </div>

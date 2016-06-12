@@ -15,6 +15,7 @@ body
 	margin:auto;
 	height: 200px;
 	margin-top: 50px;
+	margin-bottom: 50px;
 	border-radius: 9px;
 	box-shadow: -1px -2px 4px 4px rgba(0, 0, 0, 0.3);
 	/*background-image: linear-gradient(to left, #63d5e6, #3e464b);*/
@@ -65,6 +66,15 @@ body
 				font-size: 19px;
 				font-weight: 600;
 				color: black;
+				margin-right: 6px;
+			}
+			a
+			{
+				text-decoration: none !important;
+				&:hover
+				{
+					text-decoration: none !important;
+				}
 			}
 		}
 		.h_buy
@@ -83,23 +93,23 @@ body
 				height: 46px;
 				border-radius: 50%;
 				background: #c3b01e;
-				cursor: pointer;
-				left: 80.2%;
-				top: 126px;
+				cursor: pointer;			
 				img
 				{
 					width: 85%;
 					margin: 8%;
 
 				}
-				:hover
+				&:hover
 				{
-					width: 42px;
+					/*width: 42px;
 					height: 42px;
 					border-radius: 50%;
 					background: #40bf9f;
 					cursor: pointer;
-					margin: 5%;
+					margin: 5%;*/
+					transform:scale(1.1);
+					transition:0.3s;
 				}
 			}
 
@@ -113,6 +123,8 @@ body
 	height: 50px;
 	border-radius: 9px;
 	margin: auto;
+	position: fixed;
+	top: 250px;
 	.m_wrp
 	{
 		width: 1190px;
@@ -294,19 +306,21 @@ body
 						{
 							width: 153px;
 							height: 30px;
-							color: white;
-							background-color: rgb(204, 204, 204);
+							color: white;						
 							padding: 3px 0px;
-							background-image: linear-gradient(to top, #b7f2c4, #136f6f);
+							/*background-image: linear-gradient(to top, #b7f2c4, #136f6f);*/
+							background: #38ACE5;
 							border-style: solid;
 							border-width: 1px;
-							border-color: black;
-							border-radius: 2px;
+							border-color: grey;
+							border-radius: 4px;
 							font-size: 17px;
 							font-weight: 400;
 							&:hover
 							{
-								background-image: linear-gradient(to top, #b4ceb9, #65c9de);
+								/*background-image: linear-gradient(to top, #b4ceb9, #65c9de);*/
+								background: #4c9ed9;
+								color: white;
 							}
 						}
 					}
@@ -423,18 +437,19 @@ body
 								width: 153px;
 								height: 30px;
 								color: white;
-								background-color: rgb(204, 204, 204);
+								background: #38ACE5;
+								border-color: grey;
 								padding: 3px 0px;
-								background-image: linear-gradient(to top, #b7f2c4, #136f6f);
 								border-style: solid;
 								border-width: 1px;
-								border-color: black;
-								border-radius: 2px;
+								border-radius: 4px;
 								font-size: 17px;
 								font-weight: 400;
 								&:hover
 								{
-									background-image: linear-gradient(to top, #b4ceb9, #65c9de);
+									/*background-image: linear-gradient(to top, #b4ceb9, #65c9de);*/
+									background: #4c9ed9;
+									color: white;
 								}
 							}
 						}
@@ -516,9 +531,25 @@ body
 								font-weight: 400;
 							}
 						}
+						.size_item
+						{
+							border: none;
+							width: 35px;
+							height: 35px;
+							border-radius: 4px;
+							margin-right: 5px;
+							margin-bottom: 8px;
+							background: rgba(128, 128, 128, 0.19);
+							&:hover
+							{
+								background:#4c9ed9;
+								color: white;
+							}
+
+						}
 						.size_item.select
 						{
-						    background-color: blue;
+						    background-color: #38ace5;
 						    color: #fff;
 						}
 						.goods_description
@@ -690,6 +721,11 @@ body
 			{
 				width: 100%;
 				padding:25px;
+				.total-price
+				{
+					text-align: center;
+					font-size: 16px;
+				}
 				.oredre_wrap
 				{
 					background-image: linear-gradient(to left, rgb(99, 213, 230), rgb(193, 213, 225));
@@ -789,6 +825,7 @@ body
 							}
 						}
 					}
+
 					.bask_item
 					{
 						clear: both;
@@ -904,6 +941,24 @@ body
 	float: right;
 	width: 858px;
 	padding-top: 10px;
+	.h_mail
+	{
+		div
+		{
+			text-align: center;
+			a
+			{
+				font-size: 16px;
+				text-decoration: none;
+				border-bottom: 1px dashed #337ab7;
+				&:hover
+				{
+					text-decoration: none;
+					border-bottom: 1px dashed #23527c;
+				}
+			}
+		}
+	}
 }
 .wd
 {
@@ -970,4 +1025,39 @@ a
 .bt_next
 {
 	margin-top: 45px;
+}
+a
+{
+	text-decoration: none;
+	&:hover
+	{
+		text-decoration:none;
+		
+	}
+	&:visited
+	{
+		outline: none;
+	}
+	&:focus
+	{
+  		outline: none;
+	};
+}
+.bg_top
+{
+	border-radius: 2px;
+	background: url('/img/bg.png');
+	color: white !important;
+	/*.m_wrp
+	{
+
+	}*/
+}
+.wtc
+{
+	color: white !important;
+	&:hover
+	{
+		color:black !important;
+	}
 }

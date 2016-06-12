@@ -70,12 +70,13 @@
 
 								<div class="item_del_wrp" data-id="{{$order->item_id}}">delete
 								</div>
-								<hr>
+								
 							</div>
 						@endforeach
-						<hr>
+						
 			    	</div>
-					<div class="total-price" style="text-align: center;">Общая цена: {{$total}}</div>
+					<div class="total-price" style="text-align: center;">Общая цена: {{$total}}</div>					
+					<hr>
 			    	<div class="bt_go">
 				    	<a href="{{route('order.create')}}">
 				    		<div class="go">
