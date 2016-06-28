@@ -78,6 +78,16 @@
 		     		</div>
 		     	</div>	
 	     	</div>
+
+	     	<div class="control">
+				<div class="arrow_left_it">
+					<img src="/img/left.png">
+				</div>
+				<div class="arrow_right_it">
+					<img src="/img/right.png">
+				</div>
+			</div>
+
 	     </div>
 
 	     <div class="txt1">
