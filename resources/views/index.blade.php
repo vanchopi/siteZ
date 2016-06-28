@@ -2,7 +2,17 @@
 @section("content")
 
 <div class="content_slider">
-	<img src="{{asset('/img/slide.jpg')}}">
+	<a href="#">
+		<img src="{{asset('/img/slide.jpg')}}">
+	</a>
+	<div class="control">
+		<div class="arrow_left">
+			<img src="/img/left.png">
+		</div>
+		<div class="arrow_right">
+			<img src="/img/right.png">
+		</div>
+	</div>
 </div>
 
 <div class="content_wrap">

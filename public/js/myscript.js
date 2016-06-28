@@ -210,3 +210,55 @@ $(document).ready(function(){
 	    }); 
 	});
 })
+
+$(document).ready(function()
+
+{
+	$(".head_menu a span:contains('Клубы')").mouseenter(function()
+	{		
+		$('.cat_clubs').slideToggle();
+		$('.cat_n_teams').hide();
+		$('.cat_shoes').hide();
+	})
+	
+	$(".head_menu a span:contains('Сборные')").mouseenter(function()
+	{
+		$('.cat_n_teams').slideToggle();
+		$('.cat_clubs').hide();
+		$('.cat_shoes').hide();			
+	})
+
+	$(".head_menu a span:contains('Обувь')").mouseenter(function()
+	{
+		$('.cat_shoes').slideToggle();
+		$('.cat_n_teams').hide();	
+		$('.cat_clubs').hide();
+	})
+
+	$("a.boots").mouseenter(function()
+	{		
+		$('.boots_cont').slideToggle();
+		$('.boots_cont').css('display','inline-block');
+		$('.cat_shoes').css('display','inline-block');
+		$('.cat_n_teams').hide();	
+		$('.cat_clubs').hide();
+	})
+
+	
+})
+
+$(document).ready(function()
+{
+	$(".cat_clubs").mouseleave(function()
+	{
+		$('.cat_clubs').hide();
+	})
+	$(".cat_n_teams").mouseleave(function()
+	{
+		$('.cat_n_teams').hide();	
+	})
+	$(".cat_shoes").mouseleave(function()
+	{
+		$('.cat_shoes').hide();
+	})	
+})
