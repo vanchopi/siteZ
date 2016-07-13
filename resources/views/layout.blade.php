@@ -21,6 +21,39 @@
     </head>
     <body>
         <div class="block header">
+            <div class="convert_wrp">
+                <div class="convert ib">
+                    <div class="form_wrp">
+                        <form class="form_ask" method="POST" action="/">
+                            <div class="txt">
+                                <span>Форма обратной связи</span><br>
+                                Оставьте своё сообщение и мы ответим на него в ближайшее время
+                            </div>
+                            <div class="name field1">
+                                <input placeholder="Ваше Имя">
+                            </div>    
+                            <div class="mail field1">
+                                <input placeholder="E-mail">
+                            </div>
+                            <div class="phone field1">
+                                <input placeholder="Телефон">
+                            </div>
+                            <div class="massage">
+                                <textarea placeholder="Сообщение">
+                                </textarea>
+                            </div>
+                            <div class="bt_subm">
+                                <input class="nbt" value="Отправить" type="submit">
+                            </div>
+                        </form>
+                    </div>    
+                </div>
+                <div class="conv_bt ib">
+                    Скрыть
+                </div>
+            </div>
+
+            <div class="cn_bt">Задать вопрос</div>
             <div class="h_wrap">
                 <a class="ib" href="/">
                     <div class="h_logo">

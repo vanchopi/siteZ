@@ -17,6 +17,8 @@ $(document).ready(function(){
 	})
 })
 
+
+
 $(document).ready(function(){
 	$(".fancybox").fancybox({
 	//        padding: 0,
@@ -262,3 +264,34 @@ $(document).ready(function()
 		$('.cat_shoes').hide();
 	})	
 })
+
+
+
+/*
+* question form 
+*/
+
+$(document).ready(function(){
+   $('.cn_bt').on('click',function()
+
+    {
+              
+        $('.convert_wrp').animate(
+            {
+                marginLeft : "+=434px"
+            },1500); 
+        $('.cn_bt').hide();                          
+    })
+})  
+$(document).ready(function(){
+   $('.conv_bt').on('click',function()
+
+    {
+                 
+        $('.convert_wrp').animate(
+            {
+                marginLeft : "-=434px"
+            },1500); 
+        $('.cn_bt').fadeIn(2600);;                          
+    })
+})  
