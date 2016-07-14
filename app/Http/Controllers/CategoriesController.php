@@ -44,6 +44,7 @@ class CategoriesController extends Controller
     {
         $category=new Categories;
         $category->category_title=$request->category_title;
+        $category->category_url_title=str_slug($request->category_title);
         $category->save(); // Сохраняем все в базу.
         Toastr::success('Категория добавлена.', $title = null, $options = []);
         return back();
@@ -52,6 +53,7 @@ class CategoriesController extends Controller
     {
         $category=Categories::find($request->category_id);
         $category->category_title=$request->category_title;
+        $category->category_url_title=str_slug($request->category_title);
         $category->save(); // Сохраняем все в базу.
         Toastr::success('Категория изменена.', $title = null, $options = []);
         return back();

@@ -97,7 +97,7 @@
                     </li>
                     @foreach($allcategories as $category)
                         <li>
-                            <a class="wd_m" href="{{route('site.items.category',$category->category_title)}}">
+                            <a class="wd_m" href="{{route('site.items.category',$category->category_url_title)}}">
                                 <span>{{$category->category_title}}</span>
                             </a>
                         </li>

@@ -63,6 +63,7 @@ class SSCategoriesController extends Controller
         $sscategory=new SSCategories;
         $sscategory->s_category_id=$request->s_category_id;
         $sscategory->s_s_category_title=$request->s_s_category_title;
+        $sscategory->s_s_category_url_title=str_slug($request->s_s_category_title);
         $sscategory->s_s_category_preview=$preview; //ссылки на картинки
         $sscategory->save(); // Сохраняем все в базу.
         Toastr::success('Под-под категория добавлена.', $title = null, $options = []);
@@ -77,6 +78,7 @@ class SSCategoriesController extends Controller
         $sscategory=SSCategories::find($request->s_s_category_id);
         $sscategory->s_category_id=$request->s_category_id;
         $sscategory->s_s_category_title=$request->s_s_category_title;
+        $sscategory->s_s_category_url_title=str_slug($request->s_s_category_title);
         strlen($sscategory->s_s_category_preview) ? $sscategory->s_s_category_preview=explode(';',$sscategory->s_s_category_preview) : $sscategory->s_s_category_preview=[];
         $sscategory->s_s_category_preview=implode(';',array_merge($sscategory->s_s_category_preview,$preview));
         $sscategory->save(); // Сохраняем все в базу.

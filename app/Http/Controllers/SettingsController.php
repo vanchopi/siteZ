@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use Storage;
 use App\Http\Requests;
 
+use App\Items;
+use App\Categories;
+use App\SCategories;
+use App\SSCategories;
+
 class SettingsController extends Controller
 {
     public $file = 'settings.json';
@@ -29,6 +34,38 @@ class SettingsController extends Controller
             'site_settings'=>$site_settings
         ]);
     }
+    public function url()
+    {
+        $items = Items::all();
+        foreach($items as $item) {
+            $new=Items::find($item->id);
+            $new->url_title=str_slug($item->title);
+            $new->save();
+        }
+        $items = Categories::all();
+        foreach($items as $item) {
+            $new=Categories::find($item->category_id);
+            $new->category_url_title=str_slug($item->category_title);
+            $new->save();
+        }
+        $items = SCategories::all();
+        foreach($items as $item) {
+            $new=SCategories::find($item->s_category_id);
+            $new->s_category_url_title=str_slug($item->s_category_title);
+            $new->save();
+        }
+        $items = SSCategories::all();
+        foreach($items as $item) {
+            $new=SSCategories::find($item->s_s_category_id);
+            $new->s_s_category_url_title=str_slug($item->s_s_category_title);
+            $new->save();
+        }
+        session(['message' => 'Настройки изменены']);
+        return back();
+    }
+
+
+
     public function savehome(Request $request)
     {
         $collection = collect([
