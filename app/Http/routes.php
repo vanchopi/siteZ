@@ -21,26 +21,26 @@ Route::get('/', function () {
 
 Route::get('/',           ['uses' => 'ItemsController@index',           'as' => 'site.items.index']);
 
-Route::get('/Товар/{title}',           ['uses' => 'ItemsController@one',           'as' => 'site.items.one']);
+Route::get('/item/{title}',           ['uses' => 'ItemsController@one',           'as' => 'site.items.one']);
 
 
 
 /*
     Категории
 */
-Route::get('/Категория/{title}',
+Route::get('/category/{title}',
     [
         'uses' => 'ItemsController@category',
         'as' => 'site.items.category'
     ]
 );
-Route::get('/Категория/{title}/{s_category_title}',
+Route::get('/category/{title}/{s_category_title}',
     [
         'uses' => 'ItemsController@scategory',
         'as' => 'site.items.scategory'
     ]
 );
-Route::get('/Категория/{title}/{s_category_title}/{s_s_category_title}',
+Route::get('/category/{title}/{s_category_title}/{s_s_category_title}',
     [
         'uses' => 'ItemsController@all',
         'as' => 'site.items.all'
@@ -50,14 +50,14 @@ Route::get('/Категория/{title}/{s_category_title}/{s_s_category_title}'
 /*
     Корзина
 */
-Route::get('/Корзина',           ['uses' => 'BasketController@index',           'as' => 'basket']);
+Route::get('/basket',           ['uses' => 'BasketController@index',           'as' => 'basket']);
 Route::get('/basket/clear',           ['uses' => 'BasketController@clear',           'as' => 'basket.clear']);
 
 
 
 
 
-Route::get('/Заказ',           ['uses' => 'OrdersController@create',           'as' => 'order.create']);
+Route::get('/order',           ['uses' => 'OrdersController@create',           'as' => 'order.create']);
 Route::post('orderadd',           ['uses' => 'OrdersController@add',           'as' => 'ordersadd']);
 Route::post('basketadd',           ['uses' => 'OrdersController@add',           'as' => 'basketadd']);
 
@@ -103,6 +103,7 @@ Route::group(['prefix' => 'home','middleware' => ['web']], function() {
 
     Route::get('settings/home',           ['uses' => 'SettingsController@home',           'as' => 'settings.home']);
     Route::get('settings/site',           ['uses' => 'SettingsController@site',           'as' => 'settings.site']);
+    Route::get('settings/url',           ['uses' => 'SettingsController@url',           'as' => 'settings.url']);
     Route::post('settings/home',           ['uses' => 'SettingsController@savehome',           'as' => 'settings.save.home']);
     Route::post('settings/site',           ['uses' => 'SettingsController@savesite',           'as' => 'settings.save.site']);
 

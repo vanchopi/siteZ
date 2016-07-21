@@ -35,21 +35,21 @@ class Items extends Model
                         ->join('categories','items.category_id','=','categories.category_id')
                         ->join('s_categories','items.s_category_id','=','s_categories.s_category_id')
                         ->join('s_s_categories','items.s_s_category_id','=','s_s_categories.s_s_category_id')
-                        ->select('items.*', 'categories.category_title', 's_categories.s_category_title', 's_s_categories.s_s_category_title' )
+                        //->select('items.*', 'categories.category_title', 's_categories.s_category_title', 's_s_categories.s_s_category_title' )
                         ->first();
                 }
                 else {
                     return DB::table('items')->where('items.id',$item_id)
                         ->join('categories','items.category_id','=','categories.category_id')
                         ->join('s_categories','items.s_category_id','=','s_categories.s_category_id')
-                        ->select('items.*', 'categories.category_title', 's_categories.s_category_title')
+                        //->select('items.*', 'categories.category_title', 's_categories.s_category_title')
                         ->first();
                 }
             }
             else {
                 return DB::table('items')->where('items.id',$item_id)
                     ->join('categories','items.category_id','=','categories.category_id')
-                    ->select('items.*', 'categories.category_title')
+                    //->select('items.*', 'categories.category_title')
                     ->first();
             }
         }

@@ -9,10 +9,10 @@
 	</a>
 	<div class="control">
 		<div class="arrow_left">
-			<img src="/img/left.png">
+			<img src="{{asset('/img/left.png')}}">
 		</div>
 		<div class="arrow_right">
-			<img src="/img/right.png">
+			<img src="{{asset('/img/right.png')}}">
 		</div>
 	</div>
 </div>
@@ -83,10 +83,10 @@
 
 	     	<div class="control">
 				<div class="arrow_left_it">
-					<img src="/img/left.png">
+					<img src="{{asset('/img/left.png')}}">
 				</div>
 				<div class="arrow_right_it">
-					<img src="/img/right.png">
+					<img src="{{asset('/img/right.png')}}">
 				</div>
 			</div>
 
@@ -112,10 +112,10 @@
 					<div class="item">
 						<div class="wrp_item">
 							<div class="img_wrp">
-								<a href="{{route('site.items.one',$item->title)}}"><img src="{{asset('img/items/'.explode(';',$item->preview)[0])}}"></a>
+								<a href="{{route('site.items.one',$item->url_title)}}"><img src="{{asset('img/items/'.explode(';',$item->preview)[0])}}"></a>
 							</div>
 							<div class="c_desc">
-								<span><a href="{{route('site.items.one',$item->title)}}">{{$item->title}}</a></span>
+								<span><a href="{{route('site.items.one',$item->url_title)}}">{{$item->title}}</a></span>
 								<div class="fee">{{$item->price}} ₽</div>
 							</div>
 							<div class="buy">

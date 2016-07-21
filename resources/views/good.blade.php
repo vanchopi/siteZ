@@ -6,12 +6,12 @@
 <div class="content_wrap">
 
 		<div class="tx_l">
-			<a href="{{route('site.items.category',$item->category_title)}}">{{$item->category_title}}</a>
+			<a href="{{route('site.items.category',$item->category_url_title)}}">{{$item->category_title}}</a>
 			@if (isset($item->s_category_title))
-				| <a href="{{route('site.items.scategory',[$item->category_title,$item->s_category_title])}}">{{$item->s_category_title}}</a>
+				| <a href="{{route('site.items.scategory',[$item->category_url_title,$item->s_category_url_title])}}">{{$item->s_category_title}}</a>
 			@endif
 			@if (isset($item->s_s_category_title))
-				| <a href="{{route('site.items.all',[$item->category_title,$item->s_category_title,$item->s_s_category_title])}}">{{$item->s_s_category_title}}</a>
+				| <a href="{{route('site.items.all',[$item->category_url_title,$item->s_category_url_title,$item->s_s_category_url_title])}}">{{$item->s_s_category_title}}</a>
 			@endif
 			| {{$item->title}}
 		</div>
@@ -21,12 +21,12 @@
 	    	@include('club-menu')		    
 		    <div class="main_cont">
 
-				<a href="{{route('site.items.category',$item->category_title)}}">{{$item->category_title}}</a>
+				<a href="{{route('site.items.category',$item->category_url_title)}}">{{$item->category_title}}</a>
 				@if (isset($item->s_category_title))
-					| <a href="{{route('site.items.scategory',[$item->category_title,$item->s_category_title])}}">{{$item->s_category_title}}</a>
+					| <a href="{{route('site.items.scategory',[$item->category_url_title,$item->s_category_url_title])}}">{{$item->s_category_title}}</a>
 				@endif
 				@if (isset($item->s_s_category_title))
-					| <a href="{{route('site.items.all',[$item->category_title,$item->s_category_title,$item->s_s_category_title])}}">{{$item->s_s_category_title}}</a>
+					| <a href="{{route('site.items.all',[$item->category_url_title,$item->s_category_url_title,$item->s_s_category_url_title])}}">{{$item->s_s_category_title}}</a>
 				@endif
 				| {{$item->title}}
 			    	<div class="goods_wrap">

@@ -57,6 +57,7 @@ class SCategoriesController extends Controller
         $scategory=new SCategories;
         $scategory->category_id=$request->category_id;
         $scategory->s_category_title=$request->s_category_title;
+        $scategory->s_category_url_title=str_slug($request->s_category_title);
         $scategory->s_category_preview=$preview; //ссылки на картинки
         $scategory->save(); // Сохраняем все в базу.
         Toastr::success('Под-категория добавлена.', $title = null, $options = []);
@@ -71,6 +72,7 @@ class SCategoriesController extends Controller
         $scategory=SCategories::find($request->s_category_id);
         $scategory->category_id=$request->category_id;
         $scategory->s_category_title=$request->s_category_title;
+        $scategory->s_category_url_title=str_slug($request->s_category_title);
         strlen($scategory->s_category_preview) ? $scategory->s_category_preview=explode(';',$scategory->s_category_preview) : $scategory->s_category_preview=[];
         $scategory->s_category_preview=implode(';',array_merge($scategory->s_category_preview,$preview));
 

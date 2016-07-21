@@ -35,10 +35,10 @@ class ItemsController extends Controller
         $options_values = Options::all();
         $categories = Categories::all();
 
-        $item = Items::where('title',$title)->first();
+        $item = Items::where('url_title',$title)->first();
         $option_values = Options::getvalues($item->id);
         $item = Items::findandcategories($item->id);
-
+        //dd($categories);
         $options = collect();
         foreach($option_values as $value) {
             if (!$options->contains($value->option_id)) {
@@ -70,9 +70,9 @@ class ItemsController extends Controller
     public function all($title, $s_category_title, $s_s_category_title)
     {
         $allcategories = Categories::all();
-        $categories = Categories::where('category_title',$title)->first();
-        $scategories = SCategories::where('s_category_title',$s_category_title)->first();
-        $sscategories = SSCategories::where('s_s_category_title',$s_s_category_title)->first();
+        $categories = Categories::where('category_url_title',$title)->first();
+        $scategories = SCategories::where('s_category_url_title',$s_category_title)->first();
+        $sscategories = SSCategories::where('s_s_category_url_title',$s_s_category_title)->first();
 
         $s_s_category_id = $sscategories->s_s_category_id;
 
@@ -91,7 +91,7 @@ class ItemsController extends Controller
     {
         $allcategories = Categories::all();
 
-        $categories = Categories::where('category_title',$title)->first();
+        $categories = Categories::where('category_url_title',$title)->first();
 
         $id = $categories->category_id;
         $scategories_need = SCategories::findparent($id);
@@ -118,8 +118,8 @@ class ItemsController extends Controller
     {
         $allcategories = Categories::all();
 
-        $categories = Categories::where('category_title',$title)->first();
-        $scategories = SCategories::where('s_category_title',$s_category_title)->first();
+        $categories = Categories::where('category_url_title',$title)->first();
+        $scategories = SCategories::where('s_category_url_title',$s_category_title)->first();
 
         $s_category_id = $scategories->s_category_id;
 
@@ -257,6 +257,7 @@ class ItemsController extends Controller
 
         $item=new Items;
         $item->title=$request->title; //название
+        $item->url_title=str_slug($request->title);
         $item->category_id=$request->category_id;//описание
         if ($request->s_category_id != '0') {
             $item->s_category_id=$request->s_category_id;//описание
@@ -314,6 +315,7 @@ class ItemsController extends Controller
 // Сохраняем товар
             $item=Items::find($request->id);
             $item->title=$request->title; //название
+            $item->url_title=str_slug($request->title);
             $item->category_id=$request->category_id; //название
             if ($request->s_category_id != '0') {
                 $item->s_category_id=$request->s_category_id;
