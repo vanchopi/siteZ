@@ -213,7 +213,7 @@ $(document).ready(function(){
 	});
 })
 
-$(document).ready(function()
+/*$(document).ready(function()
 
 {
 	$(".head_menu a span:contains('Клубы')").mouseenter(function()
@@ -263,7 +263,7 @@ $(document).ready(function()
 	{
 		$('.cat_shoes').hide();
 	})	
-})
+})*/
 
 
 
@@ -279,7 +279,7 @@ $(document).ready(function(){
         $('.convert_wrp').animate(
             {
                 marginLeft : "+=434px"
-            },1500); 
+            },800); 
         $('.cn_bt').hide();                          
     })
 })  
@@ -291,7 +291,102 @@ $(document).ready(function(){
         $('.convert_wrp').animate(
             {
                 marginLeft : "-=434px"
-            },1500); 
-        $('.cn_bt').fadeIn(2600);;                          
+            },800); 
+        $('.cn_bt').fadeIn(2600);                         
     })
-})  
+}) 
+
+
+$(document).ready(function(){
+	$('.wd_m').each(function(){
+		$('.wd_m:contains("Клубы")').addClass('clubs');
+		$('.wd_m:contains("Сборные")').addClass('teams');
+		$('.wd_m:contains("Обувь")').addClass('boots');
+	})
+}) 
+
+
+$(document).ready(function(){
+	
+	$('.clubs').mouseenter(function(){
+		$('.cat_clubs').show();		
+	})
+	$('.clubs').mouseleave(function(){
+		$('.cat_clubs').hide();
+	})
+
+	$('.teams').mouseenter(function(){
+		$('.cat_n_teams').show();		
+	})
+	$('.teams').mouseleave(function(){
+		$('.cat_n_teams').hide();
+	})
+
+	$('.boots').mouseenter(function(){
+		$('.cat_shoes').show();		
+	})
+	$('.boots').mouseleave(function(){
+		$('.cat_shoes').hide();
+	})
+})
+
+/*
+* big slider
+*/
+
+$(document).ready(function(){
+
+	var k = 0;
+
+	$('.content_slider img.sld').each(function(){
+		k++;
+	})	
+
+
+
+	var sl = 1;
+
+	$('.arrow_right').click(function(){
+
+		sl++;
+		var next_sl = '.sld'+'#'+sl;
+		var z = sl-1; 
+		var curr = '.sld'+'#'+z;
+		//alert(curr);
+
+		if(sl>k)
+		{
+			sl = 1;
+			next_sl = '.sld'+'#'+1;
+			curr = '.sld'+'#'+k;
+			//alert(next_sl,' ',k);
+		}
+
+		$(curr).hide();
+		$('.sld').removeClass('active_img');
+		$(next_sl).fadeIn(800);
+		$(next_sl).addClass('active_img');
+		
+	});
+
+	$('.arrow_left').click(function(){
+		sl--;
+		var next_sl = '.sld'+'#'+sl;
+		var z = sl+1; 
+		var curr = '.sld'+'#'+z;
+		//alert(curr);
+
+		if(sl<1)
+		{
+			sl = k;
+			next_sl = '.sld'+'#'+k;
+			curr = '.sld'+'#'+1;
+			//alert(next_sl,' ',k);
+		}
+
+		$(curr).hide();
+		$('.sld').removeClass('active_img');
+		$(next_sl).fadeIn(800);
+		$(next_sl).addClass('active_img');
+	})
+})

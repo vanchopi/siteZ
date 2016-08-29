@@ -3,7 +3,9 @@
 
 <div class="content_slider">
 	<a href="#">
-		<img src="{{asset('/img/slide.jpg')}}">
+		<img id="1" src="{{asset('/img/slide.jpg')}}" class="sld img_none active_img">
+		<img id="2" src="{{asset('/img/slide1.jpg')}}" class="sld img_none">
+		<img id="3" src="{{asset('/img/slide1.jpg')}}" class="sld img_none">
 	</a>
 	<div class="control">
 		<div class="arrow_left">

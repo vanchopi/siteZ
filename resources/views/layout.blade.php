@@ -88,189 +88,193 @@
             </div>
         </div>
         <div class="head_menu">
-            <div class="m_wrp">
-                <ul>
-                    <li>
-                        <a class="wd_m" href="{{asset('/')}}">
-                            <span>Главная</span>
-                        </a>
-                    </li>
-                    @foreach($allcategories as $category)
+            <div class="head_within">
+                <div class="m_wrp">
+                    <ul>
                         <li>
-                            <a class="wd_m" href="{{route('site.items.category',$category->category_url_title)}}">
-                                <span>{{$category->category_title}}</span>
-                            </a>
+
+                            <a class="wd_m" href="{{asset('/')}}">
+                                <span>Главная</span>
+                            </a>    
+                            
                         </li>
-                    @endforeach
-                </ul>
-            </div>
-            
-            <div class="categories_wrp">
-                <div class="cat_clubs">
-                    <div class="cont_eng top_ib">
-                        <a href="">Англия</a>
-                        <ul>
+                        @foreach($allcategories as $category)
                             <li>
-                                <a href="">Арсенал</a>
+                                <a class="wd_m" href="{{route('site.items.category',$category->category_url_title)}}">
+                                    <span>{{$category->category_title}}</span>
+                                </a>
                             </li>
-                            <li>
-                                <a href="">Челси</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="cont_spain top_ib">
-                        <a href="">Испания</a>
-                        <ul>
-                            <li>
-                                <a href="">Реал-Мадрид</a>
-                            </li>
-                            <li>
-                                <a href="">Барселона</a>
-                            </li>
-                        </ul>
-                    </div> 
-                    <div class="cont_germany top_ib">
-                        <a href="">Германия</a>
-                        <ul>
-                            <li>
-                                <a href="">Бавария</a>
-                            </li>
-                            <li>
-                                <a href="">Боруссия Д</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="cont_itally top_ib">
-                        <a href="">Италия</a>
-                        <ul>
-                            <li>
-                                <a href="">Ювентус</a>
-                            </li>
-                            <li>
-                                <a href="">Милан</a>
-                            </li>
-                        </ul>
-                    </div> 
-                    <div class="cont_itally top_ib">
-                        <a href="">Франция</a>
-                        <ul>
-                            <li>
-                                <a href="">ПСЖ</a>
-                            </li>
-                            <li>
-                                <a href="">Марсель</a>
-                            </li>
-                        </ul>
-                    </div> 
-                    <div class="cont_itally top_ib">
-                        <a href="">Другие</a>
-                        <ul>
-                            <li>
-                                <a href="">Ростов</a>
-                            </li>
-                            <li>
-                                <a href="">Зенит</a>
-                            </li>
-                        </ul>
-                    </div>      
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="cat_n_teams">
-                    <div class="cont">
-                        <ul>
-                            <li>
-                                <a href="">Англия</a>
-                            </li>
-                            <li>
-                                <a href="">Германия</a>
-                            </li>
-                            <li>
-                                <a href="">Испания</a>
-                            </li>
-                            <li>
-                                <a href="">Россия</a>
-                            </li>
-                            <li>
-                                <a href="">Бразилия</a>
-                            </li>
-                            <li>
-                                <a href="">Италия</a>
-                            </li>
-                            <li>
-                                <a href="">Ботсвана</a>
-                            </li>
-                            <li>
-                                <a href="">Габон</a>
-                            </li>
-                        </ul>
+                
+                <div class="categories_wrp">
+                    <div class="cat_clubs clubs">
+                        <div class="cont_eng top_ib">
+                            <a href="">Англия</a>
+                            <ul>
+                                <li>
+                                    <a href="">Арсенал</a>
+                                </li>
+                                <li>
+                                    <a href="">Челси</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="cont_spain top_ib">
+                            <a href="">Испания</a>
+                            <ul>
+                                <li>
+                                    <a href="">Реал-Мадрид</a>
+                                </li>
+                                <li>
+                                    <a href="">Барселона</a>
+                                </li>
+                            </ul>
+                        </div> 
+                        <div class="cont_germany top_ib">
+                            <a href="">Германия</a>
+                            <ul>
+                                <li>
+                                    <a href="">Бавария</a>
+                                </li>
+                                <li>
+                                    <a href="">Боруссия Д</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="cont_itally top_ib">
+                            <a href="">Италия</a>
+                            <ul>
+                                <li>
+                                    <a href="">Ювентус</a>
+                                </li>
+                                <li>
+                                    <a href="">Милан</a>
+                                </li>
+                            </ul>
+                        </div> 
+                        <div class="cont_itally top_ib">
+                            <a href="">Франция</a>
+                            <ul>
+                                <li>
+                                    <a href="">ПСЖ</a>
+                                </li>
+                                <li>
+                                    <a href="">Марсель</a>
+                                </li>
+                            </ul>
+                        </div> 
+                        <div class="cont_itally top_ib">
+                            <a href="">Другие</a>
+                            <ul>
+                                <li>
+                                    <a href="">Ростов</a>
+                                </li>
+                                <li>
+                                    <a href="">Зенит</a>
+                                </li>
+                            </ul>
+                        </div>      
                     </div>
-                </div>
-                <div>
-                    <div class="cat_shoes">
+                    <div class="cat_n_teams teams">
                         <div class="cont">
                             <ul>
                                 <li>
-                                    <a class="boots" href="">Бутсы</a>
+                                    <a href="">Англия</a>
                                 </li>
                                 <li>
-                                    <a class="foot" href="">Футзалки</a>
+                                    <a href="">Германия</a>
                                 </li>
                                 <li>
-                                    <a class="spike" href="">Шиповки</a>
+                                    <a href="">Испания</a>
                                 </li>
-                            </ul>    
-                        </div>                                          
+                                <li>
+                                    <a href="">Россия</a>
+                                </li>
+                                <li>
+                                    <a href="">Бразилия</a>
+                                </li>
+                                <li>
+                                    <a href="">Италия</a>
+                                </li>
+                                <li>
+                                    <a href="">Ботсвана</a>
+                                </li>
+                                <li>
+                                    <a href="">Габон</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="boots_cont">
-                            <ul>
-                                <li>
-                                    <a class="boots" href="">Nike</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Adidas</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Puma</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Mizuno</a>
-                                </li>
-                            </ul>    
+                    <div>
+                        <div class="cat_shoes boots">
+                            <div class="cont">
+                                <ul>
+                                    <li>
+                                        <a class="boots" href="">Бутсы</a>
+                                    </li>
+                                    <li>
+                                        <a class="foot" href="">Футзалки</a>
+                                    </li>
+                                    <li>
+                                        <a class="spike" href="">Шиповки</a>
+                                    </li>
+                                </ul>    
+                            </div>                                          
                         </div>
+                        <div class="boots_cont">
+                                <ul>
+                                    <li>
+                                        <a class="boots" href="">Nike</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Adidas</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Puma</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Mizuno</a>
+                                    </li>
+                                </ul>    
+                            </div>
 
-                        <div class="foo_cont">
-                            <ul>
-                                 <li>
-                                    <a class="boots" href="">Nike</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Adidas</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Puma</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Mizuno</a>
-                                </li>
-                            </ul>
-                        </div>
+                            <div class="foo_cont">
+                                <ul>
+                                     <li>
+                                        <a class="boots" href="">Nike</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Adidas</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Puma</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Mizuno</a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                        <div class="spike_cont">
-                            <ul>
-                                 <li>
-                                    <a class="boots" href="">Nike</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Adidas</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Puma</a>
-                                </li>
-                                <li>
-                                    <a class="boots" href="">Mizuno</a>
-                                </li>
-                            </ul>
-                        </div>  
-                </div>        
+                            <div class="spike_cont">
+                                <ul>
+                                     <li>
+                                        <a class="boots" href="">Nike</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Adidas</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Puma</a>
+                                    </li>
+                                    <li>
+                                        <a class="boots" href="">Mizuno</a>
+                                    </li>
+                                </ul>
+                            </div>  
+                    </div>        
+                </div>
             </div>
         </div>
 
