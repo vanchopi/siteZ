@@ -66,10 +66,10 @@
                     </div>
                     <div class="h_mail ib wd">
                         <div>
-                            <a href="#">о нас</a>
+                            <a href="{{url('/about')}}">о нас</a>
                         </div>
                         <div>   
-                            <a href="#">как заказать?</a>
+                            <a href="{{url('/instruction')}}">как заказать?</a>
                         </div>    
                     </div>
                     <div class="ib h_regim wd">
