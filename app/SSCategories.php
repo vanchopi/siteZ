@@ -18,9 +18,11 @@ class SSCategories extends Model
             ->get();
         return $sscategory_id;
     }
-    public static function findparent($id)
+    public static function findparent($category_id,$s_category_id)
     {
-        return DB::table('s_s_categories')->where('s_s_categories.s_category_id',$id)
+        return DB::table('s_s_categories')
+            ->where('s_s_categories.category_id',$category_id)
+            ->where('s_s_categories.s_category_id',$s_category_id)
             ->join('s_categories','s_s_categories.s_category_id','=','s_categories.s_category_id')
             ->get();
     }

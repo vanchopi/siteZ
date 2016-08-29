@@ -9,14 +9,21 @@ class Items extends Model
 {
     protected $fillable = ['title','category_id','s_category_id','text','preview','price','status'];
 
-    public static function findSSCategory($s_s_category_id)
+    public static function findSSCategory($category_id,$s_category_id,$s_s_category_id)
     {
-        return DB::table('items')->where('items.s_s_category_id',$s_s_category_id)->get();
+        return DB::table('items')
+            ->where('items.category_id',$category_id)
+            ->where('items.s_category_id',$s_category_id)
+            ->where('items.s_s_category_id',$s_s_category_id)
+            ->get();
 
     }
-    public static function findSCategory($s_category_id)
+    public static function findSCategory($category_id,$s_category_id)
     {
-        return DB::table('items')->where('items.s_category_id',$s_category_id)->get();
+        return DB::table('items')
+            ->where('items.category_id',$category_id)
+            ->where('items.s_category_id',$s_category_id)
+            ->get();
 
     }
     public static function findCategory($category_id)

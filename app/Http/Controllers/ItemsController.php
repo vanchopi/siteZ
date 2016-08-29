@@ -77,7 +77,7 @@ class ItemsController extends Controller
         $s_s_category_id = $sscategories->s_s_category_id;
 
         //$items = Items::all();
-        $items = Items::findSSCategory($s_s_category_id);
+        $items = Items::findSSCategory($categories->category_id,$scategories->s_category_id,$s_s_category_id);
         //$categories = Categories::all();
         return view('items',[
             'allcategories'=>$allcategories,
@@ -124,9 +124,10 @@ class ItemsController extends Controller
         $s_category_id = $scategories->s_category_id;
 
 
-        $sscategories_need = SSCategories::findparent($s_category_id);
+        $sscategories_need = SSCategories::findparent($categories->category_id,$s_category_id);
+        //dd($sscategories_need);
         if (empty($sscategories_need)) {
-            $items = Items::findSCategory($s_category_id);
+            $items = Items::findSCategory($categories->category_id, $s_category_id);
             return view('items',[
                 'allcategories'=>$allcategories,
                 'categories'=>$categories,
